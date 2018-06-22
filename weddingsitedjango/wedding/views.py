@@ -5,6 +5,7 @@ from rest_framework.generics import (
     RetrieveAPIView,
     ListAPIView,
     )
+from django.shortcuts import render
 from .serializers import *
 from wedding.models import *
 
@@ -29,3 +30,6 @@ class DietaryDetailAPIView(ListAPIView):
 class PictureListAPIView(ListAPIView):
     queryset = Picture.objects.all()
     serializer_class = PictureSerializer
+
+def homepage(request):
+    return render(request, 'index.html')

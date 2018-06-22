@@ -9,7 +9,6 @@ urlpatterns = [
     url(r'^rsvp/all/$', RSVPDetailAPIView.as_view(), name='rsvp-all'),
     url(r'^registry/all/$', RegistryDetailAPIView.as_view(), name='registry-all'),
     url(r'^dietary/all/$', GuestDetailAPIView.as_view(), name='dietary-all'),
-    url(r'^$', serve,kwargs={'path': 'index.html'}),
-        url(r'^(?!/?static/)(?!/?media/)(?P<path>.*\..*)$',
-        RedirectView.as_view(url='/static/%(path)s', permanent=False)),
+    url(r'^(?!/?static/)(?!/?media/)(?P<path>.*\..*)$', RedirectView.as_view(url='/static/%(path)s', permanent=False)),
+    url(r'', homepage, name='index'),
 ]
