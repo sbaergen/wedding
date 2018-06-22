@@ -1,3 +1,6 @@
 .DS_Store
 angular-tou-of-heroes
 env
+db.sqlite3
+__pycache__
+media/
