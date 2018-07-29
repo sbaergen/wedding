@@ -20,3 +20,27 @@
         </div>
     </div>
 </nav>
+<body>
+    RSVP
+    <form class="Code Entry">
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="RSVP Code" #codeInput>
+            <mat-hint>The RSVP Code is on the Invitation</mat-hint>
+        </mat-form-field>
+        <button mat-fab (click)="checkCode(codeInput)" color="primary">Submit</button>
+    </form>
+    <div *ngIf="correct">
+        Enter your name:
+        <form class="Code Entry">
+            <mat-form-field appearance="outline">
+            <input matInput placeholder="First Name" #firstName>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+            <input matInput placeholder="Last Name" #lastName>
+            </mat-form-field>
+            <button mat-fab (click)="getNames(firstName.value, lastName.value)" color="primary">Search</button>
+            <div>{{firstName.value}} {{lastName.value}}</div>
+        </form>
+    </div>
+</body>
+
