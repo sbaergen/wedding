@@ -41,6 +41,28 @@
             <button mat-fab (click)="getNames(firstName.value, lastName.value)" color="primary">Search</button>
             <div>{{firstName.value}} {{lastName.value}}</div>
         </form>
+        <div *ngIf="guests.length!=0">
+            <div *ngFor="let g of guests; let i = index">
+                {{g.name}} {{i}}
+                <mat-radio-group [(ngModel)]="radio_$index">
+                    <mat-radio-button value="1">Yes :)</mat-radio-button>
+                    <mat-radio-button value="2">No :(</mat-radio-button>
+                </mat-radio-group>
+                {{radio_$index}}
+                <span *ngIf="radio_$index=='1'">
+                    <mat-form-field>
+                      <mat-select [(value)]="selected" multiple>
+                        <mat-option>None</mat-option>
+                        <mat-option value="gluten">Gluten Free</mat-option>
+                        <mat-option value="option2">Dairy Free</mat-option>
+                        <mat-option value="option3">Vegetarian</mat-option>
+                        <mat-option value="option3">Vegan</mat-option>
+                        <mat-option value="option3">Other</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </span>
+            </div>
+        </div>
     </div>
 </body>
 

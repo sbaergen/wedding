@@ -11,6 +11,7 @@ import 'rxjs/add/operator/toPromise';
 export class RsvpComponent implements OnInit {
   correct : boolean = false;
   found : boolean = false;
+  guests : Object = "";
   url : string='http://localhost:8000/wedding/guest/all/';
   constructor(private http : Http) { }
 
@@ -26,9 +27,21 @@ export class RsvpComponent implements OnInit {
   }
 
   getNames(first, last): void {
-    this.url = this.url + "?name=" + first + " " + last;
-    this.http.get(this.url).toPromise().then((res)=>{console.log(res.json());
+    var rsvp : number = 0;
+    if (first == "" || last == ""){
+        alert("Both first and last name are required");
+        return;
+    }
+    var url1 : string = this.url + "?name=" + first + " " + last;
+    this.http.get(url1).toPromise().then((res)=>{
+        return res.json()[0];
+    }).then((res)=>{
+        console.log(res.rsvp);
+        var rsvp : number = res.rsvp;
+        var url2 : string = this.url + "?rsvp=" + rsvp;
+        this.http.get(url2).toPromise().then((resp)=>{
+            this.guests = resp.json();
+        })
     })
   }
-
 }
