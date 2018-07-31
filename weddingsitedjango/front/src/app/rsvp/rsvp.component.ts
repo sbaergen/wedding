@@ -10,7 +10,8 @@ import 'rxjs/add/operator/toPromise';
 })
 export class RsvpComponent implements OnInit {
   correct : boolean = false;
-  url : string='http://localhost:8000/wedding/rsvp/all/';
+  found : boolean = false;
+  url : string='http://localhost:8000/wedding/guest/all/';
   constructor(private http : Http) { }
 
   ngOnInit() {
@@ -25,6 +26,7 @@ export class RsvpComponent implements OnInit {
   }
 
   getNames(first, last): void {
+    this.url = this.url + "?name=" + first + " " + last;
     this.http.get(this.url).toPromise().then((res)=>{console.log(res.json());
     })
   }
