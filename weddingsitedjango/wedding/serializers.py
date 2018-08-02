@@ -12,11 +12,6 @@ class GuestDetailSerializer(ModelSerializer):
         model = Guest
         fields = '__all__'
 
-class RSVPDetailSerializer(ModelSerializer):
-    class Meta(object):
-        model = RSVP
-        fields = '__all__'
-
 class RegistryDetailSerializer(ModelSerializer):
     class Meta(object):
         model = Registry

@@ -1,15 +1,12 @@
 from django.db import models
 
 # Create your models here.
-class RSVP(models.Model):
-    code = models.CharField(max_length=4, primary_key=True)
-    number = models.IntegerField()
-
 class Guest(models.Model):
-    id = models.AutoField(primary_key=True)
+    guestid = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, blank=True)
     response = models.NullBooleanField()
-    code = models.ForeignKey(RSVP, on_delete=models.CASCADE)
+    rsvp = models.IntegerField()
+    plusone = models.BooleanField(default=False)
     def __str__(self):
         return self.name
 

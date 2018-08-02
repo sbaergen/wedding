@@ -22,14 +22,16 @@
 </nav>
 <body>
     RSVP
-    <form class="Code Entry">
-        <mat-form-field appearance="outline">
-            <input matInput placeholder="RSVP Code" #codeInput>
-            <mat-hint>The RSVP Code is on the Invitation</mat-hint>
-        </mat-form-field>
-        <button mat-fab (click)="checkCode(codeInput)" color="primary">Submit</button>
-    </form>
-    <div *ngIf="correct">
+    <div *ngIf="!loggedin">
+        <form class="Code Entry">
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="RSVP Code" #codeInput>
+                <mat-hint>The RSVP Code is on the Invitation</mat-hint>
+            </mat-form-field>
+            <button mat-fab (click)="checkCode(codeInput)" color="primary">Submit</button>
+        </form>
+    </div>
+    <div *ngIf="loggedin">
         Enter your name:
         <form class="Code Entry">
             <mat-form-field appearance="outline">
@@ -43,23 +45,27 @@
         </form>
         <div *ngIf="guests.length!=0">
             <div *ngFor="let g of guests; let i = index">
-                {{g.name}} {{i}}
-                <mat-radio-group [(ngModel)]="radio_$index">
-                    <mat-radio-button value="1">Yes :)</mat-radio-button>
-                    <mat-radio-button value="2">No :(</mat-radio-button>
+                {{g.name}}
+                <mat-radio-group [(ngModel)]="g.guestid">
+                    <mat-radio-button value="a">Yes :)</mat-radio-button>
+                    <mat-radio-button value="b">No :(</mat-radio-button>
                 </mat-radio-group>
-                {{radio_$index}}
-                <span *ngIf="radio_$index=='1'">
+                <span *ngIf="g.guestid=='a'">
                     <mat-form-field>
-                      <mat-select [(value)]="selected" multiple>
-                        <mat-option>None</mat-option>
-                        <mat-option value="gluten">Gluten Free</mat-option>
-                        <mat-option value="option2">Dairy Free</mat-option>
-                        <mat-option value="option3">Vegetarian</mat-option>
-                        <mat-option value="option3">Vegan</mat-option>
-                        <mat-option value="option3">Other</mat-option>
+                      <mat-select placeholder="Dietary Restrictions" [(ngModel)]="models[i]" multiple>
+                        <mat-option (click)="deselect(models[i], i)" value="none">None</mat-option>
+                        <mat-option (click)="removeNone(models[i], i)" value="gluten">Gluten Free</mat-option>
+                        <mat-option (click)="removeNone(models[i], i)" value="dairy">Dairy Free</mat-option>
+                        <mat-option (click)="removeNone(models[i], i)" value="vegetarian">Vegetarian</mat-option>
+                        <mat-option (click)="removeNone(models[i], i)" value="vegan">Vegan</mat-option>
+                        <mat-option (click)="removeNone(models[i], i)" value="other">Other</mat-option>
                       </mat-select>
                     </mat-form-field>
+                    <span *ngIf="needOther(i)">
+                        <mat-form-field [style.fontSize.px]=12>
+                            <textarea matInput placeholder="Other Dietary Restictions" #other></textarea>
+                        </mat-form-field>
+                    </span>
                 </span>
             </div>
         </div>

@@ -9,9 +9,11 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./rsvp.component.css']
 })
 export class RsvpComponent implements OnInit {
-  correct : boolean = false;
+  loggedin : boolean = false;
   found : boolean = false;
   guests : Object = "";
+  multiSelect : any[];
+  models = [];
   url : string='http://localhost:8000/wedding/guest/all/';
   constructor(private http : Http) { }
 
@@ -20,9 +22,9 @@ export class RsvpComponent implements OnInit {
 
   checkCode(code): void {
     if (code.value == "ST2019"){
-        this.correct = true;
+        this.loggedin = true;
     } else {
-        this.correct = false;
+        this.loggedin = false;
     }
   }
 
@@ -43,5 +45,26 @@ export class RsvpComponent implements OnInit {
             this.guests = resp.json();
         })
     })
+  }
+
+  deselect(values, i): void {
+    if(values[0] == "none"){
+        this.models[i] = ["none"]
+    }
+  }
+
+  removeNone(values, i): void {
+    if(values[0] == "none"){
+        this.models[i] = values.slice(1);
+    }
+  }
+
+  needOther(i): boolean {
+    if(this.models[i] && this.models[i].slice(-1)=="other"){
+        return true;
+    }
+    else{
+        return false;
+    }
   }
 }
