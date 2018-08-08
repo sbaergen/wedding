@@ -11,7 +11,7 @@ import 'rxjs/add/operator/toPromise';
 })
 export class HomeComponent implements OnInit {
 
-  url : string ='http://localhost:8000/wedding/guest/all/';
+  url : string ='http://localhost:8000/wedding/guestsapi/';
   constructor(private http : Http){}
 
   public getGuests(){

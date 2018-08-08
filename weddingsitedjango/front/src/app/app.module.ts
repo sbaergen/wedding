@@ -14,8 +14,9 @@ import { RsvpComponent } from './rsvp/rsvp.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule, MatCardModule, MatInputModule, MatButtonModule, MatRadioModule, MatSelectModule,} from '@angular/material';
+import { MatListModule, MatCardModule, MatInputModule, MatButtonModule, MatRadioModule, MatSelectModule, MatIconModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShowErrorsComponent } from './show-errors/show-errors.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PhotosComponent,
     RsvpComponent,
     HomeComponent,
+    ShowErrorsComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MatRadioModule,
     MatSelectModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

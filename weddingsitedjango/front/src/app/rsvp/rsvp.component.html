@@ -35,39 +35,82 @@
         Enter your name:
         <form class="Code Entry">
             <mat-form-field appearance="outline">
-            <input matInput placeholder="First Name" #firstName>
+            <input matInput ngModel name="firstNameLabel" placeholder="First Name" #firstName required>
             </mat-form-field>
             <mat-form-field appearance="outline">
-            <input matInput placeholder="Last Name" #lastName>
+            <input matInput ngModel name="lastNameLabel" placeholder="Last Name" #lastName required>
             </mat-form-field>
-            <button mat-fab (click)="getNames(firstName.value, lastName.value)" color="primary">Search</button>
-            <div>{{firstName.value}} {{lastName.value}}</div>
+            <button mat-fab (click)="getNames(firstName.value, lastName.value)" [disabled]="!firstName.value || !lastName.value" color="primary">Search</button>
         </form>
+
         <div *ngIf="guests.length!=0">
-            <div *ngFor="let g of guests; let i = index">
-                {{g.name}}
-                <mat-radio-group [(ngModel)]="g.guestid">
-                    <mat-radio-button value="a">Yes :)</mat-radio-button>
-                    <mat-radio-button value="b">No :(</mat-radio-button>
-                </mat-radio-group>
-                <span *ngIf="g.guestid=='a'">
-                    <mat-form-field>
-                      <mat-select placeholder="Dietary Restrictions" [(ngModel)]="models[i]" multiple>
-                        <mat-option (click)="deselect(models[i], i)" value="none">None</mat-option>
-                        <mat-option (click)="removeNone(models[i], i)" value="gluten">Gluten Free</mat-option>
-                        <mat-option (click)="removeNone(models[i], i)" value="dairy">Dairy Free</mat-option>
-                        <mat-option (click)="removeNone(models[i], i)" value="vegetarian">Vegetarian</mat-option>
-                        <mat-option (click)="removeNone(models[i], i)" value="vegan">Vegan</mat-option>
-                        <mat-option (click)="removeNone(models[i], i)" value="other">Other</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                    <span *ngIf="needOther(i)">
-                        <mat-form-field [style.fontSize.px]=12>
-                            <textarea matInput placeholder="Other Dietary Restictions" #other></textarea>
+            <form #rsvpForm="ngForm" (ngSubmit)="actionOnSubmit(rsvpForm)" novalidate>
+                {{rsvpForm.value | json}}
+                {{rsvpForm.valid}}
+
+                <div *ngFor="let g of guests; let i = index">
+                    {{g.name}}
+                    <mat-radio-group name="{{g.name + 'rsvp'}}" [(ngModel)]="radio[i]" required>
+                        <mat-radio-button color="primary" value="true">Yes :)</mat-radio-button>
+                        <mat-radio-button color="primary" value="false">No :(</mat-radio-button>
+                    </mat-radio-group>
+                    <span *ngIf="radio[i]=='true'">
+                        <mat-form-field>
+                          <mat-select name="{{g.name + 'dietSelect'}}" placeholder="Dietary Restrictions" [(ngModel)]="models[i]" multiple required #select="ngModel">
+                            <mat-option (click)="deselect(models[i], i)" value="none">None</mat-option>
+                            <mat-option (click)="removeNone(models[i], i)" value="gluten">Gluten Free</mat-option>
+                            <mat-option (click)="removeNone(models[i], i)" value="dairy">Dairy Free</mat-option>
+                            <mat-option (click)="removeNone(models[i], i)" value="vegetarian">Vegetarian</mat-option>
+                            <mat-option (click)="removeNone(models[i], i)" value="vegan">Vegan</mat-option>
+                            <mat-option (click)="removeNone(models[i], i)" value="other">Other</mat-option>
+                          </mat-select>
                         </mat-form-field>
+                        <show-errors [control]="select"></show-errors>
+                        <span *ngIf="needOther(i)">
+                            <mat-form-field [style.fontSize.px]=12>
+                                <textarea matInput name="{{g.name + 'otherDiet'}" [(ngModel)]="extra[i]" default="" placeholder="Other Dietary Restictions" required></textarea>
+                            </mat-form-field>
+                        </span>
                     </span>
-                </span>
-            </div>
+                </div>
+                <div *ngIf="plusone">
+                    Will you bring an additional guest?
+                    <mat-radio-group name="plusRsvp" [(ngModel)]="plusOneRadio" required>
+                        <mat-radio-button color="primary" value="true">Yes</mat-radio-button>
+                        <mat-radio-button color="primary" value="false">No</mat-radio-button>
+                    </mat-radio-group>
+                    <div *ngIf="plusOneRadio=='true'">
+                        <mat-form-field appearance="standard">
+                        <input [(ngModel)]="plusFirst" name="first"matInput placeholder="First Name" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="standard">
+                        <input [(ngModel)]="plusLast" name="last" matInput placeholder="Last Name" required>
+                        </mat-form-field>
+                        <span *ngIf="plusOneRadio=='true'">
+                            <mat-form-field>
+                            <mat-select name="plusDietSelect" placeholder="Dietary Restrictions" [(ngModel)]="models['a']" multiple required #plusSelect="ngModel">
+                                <mat-option (click)="deselect(models['a'], 'a')" value="none">None</mat-option>
+                                <mat-option (click)="removeNone(models['a'], 'a')" value="gluten">Gluten Free</mat-option>
+                                <mat-option (click)="removeNone(models['a'], 'a')" value="dairy">Dairy Free</mat-option>
+                                <mat-option (click)="removeNone(models['a'], 'a')" value="vegetarian">Vegetarian</mat-option>
+                                <mat-option (click)="removeNone(models['a'], 'a')" value="vegan">Vegan</mat-option>
+                                <mat-option (click)="removeNone(models['a'], 'a')" value="other">Other</mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                            <show-errors [control]="plusSelect"></show-errors>
+                            <span *ngIf="needOther('a')">
+                                <mat-form-field [style.fontSize.px]=12>
+                                    <textarea matInput name="plusOtherDiet" [(ngModel)]="extra['a']" default="" placeholder="Other Dietary Restictions" #other="ngModel" required></textarea>
+                                </mat-form-field>
+                                <show-errors [control]="other"></show-errors>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </form>
+            <hr>
+            <div *ngIf="!rsvpForm.valid">There seems to be some missing information!</div>
+            <button mat-raised-button (click)="submitInfo()" [disabled]="!rsvpForm.valid">Submit RSVP</button>
         </div>
     </div>
 </body>
