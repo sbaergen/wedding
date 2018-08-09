@@ -10,11 +10,11 @@ import { AccomodationsComponent } from './accomodations/accomodations.component'
 import { EventComponent } from './event/event.component';
 import { RegistryComponent } from './registry/registry.component';
 import { PhotosComponent } from './photos/photos.component';
-import { RsvpComponent } from './rsvp/rsvp.component';
+import { RsvpComponent, DoneDialog } from './rsvp/rsvp.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule, MatCardModule, MatInputModule, MatButtonModule, MatRadioModule, MatSelectModule, MatIconModule} from '@angular/material';
+import { MatListModule, MatCardModule, MatInputModule, MatButtonModule, MatRadioModule, MatSelectModule, MatIconModule, MatDialogModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowErrorsComponent } from './show-errors/show-errors.component';
 
@@ -28,6 +28,7 @@ import { ShowErrorsComponent } from './show-errors/show-errors.component';
     RsvpComponent,
     HomeComponent,
     ShowErrorsComponent,
+    DoneDialog,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +46,11 @@ import { ShowErrorsComponent } from './show-errors/show-errors.component';
     CommonModule,
     MatRadioModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+  ],
+  entryComponents: [
+    DoneDialog
   ],
   providers: [],
   bootstrap: [AppComponent]

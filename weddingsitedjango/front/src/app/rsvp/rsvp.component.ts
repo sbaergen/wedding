@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -14,8 +15,7 @@ export class RsvpComponent implements OnInit {
   found : boolean = false;
   plusone : boolean = false;
   guests = [];
-  models = [];
-  plusModels = [];
+  restrictions = [];
   plusFirst;
   plusLast;
   plusOneRadio;
@@ -27,7 +27,7 @@ export class RsvpComponent implements OnInit {
     'Content-Type': 'application/json',
     'X-CSRFToken': this.getCookie('csrftoken')
   });
-  constructor(private http : Http) { }
+  constructor(private http : Http, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -49,24 +49,50 @@ export class RsvpComponent implements OnInit {
     }
   }
 
+  getDiet(guestid, index): Object {
+    return this.http.get(this.dieturl + "?guest=" + guestid).toPromise().then((res)=>{
+        this.restrictions[index] = [];
+        for (let r of res.json()) {
+            if (!['gluten', 'dairy', 'vegetarian', 'vegan'].includes(r.restriction)){
+                this.restrictions[index].push("other");
+                this.extra[index] = r.restriction;
+            } else {
+                this.restrictions[index].push(r.restriction)
+            }
+        }
+        if (this.restrictions[index].length == 0){
+            this.restrictions[index].push('none');
+        }
+
+    });
+  }
   getNames(first, last): void {
     var rsvp : number = 0;
-    if (first == "" || last == ""){
-        alert("Both first and last name are required");
-        return;
-    }
     var url1 : string = this.url + "?name=" + first + " " + last;
     this.http.get(url1).toPromise().then((res)=>{
         return res.json()[0];
     }).then((res)=>{
         var rsvp : number = res.rsvp;
-        var url2 : string = this.url + "?rsvp=" + rsvp + "&&added=False";
+        var url2 : string = this.url + "?rsvp=" + rsvp;
         this.http.get(url2).toPromise().then((resp)=>{
             this.guests = resp.json();
-            for (let g of this.guests){
-                if (g.plusone){
+            this.plusOneRadio = "false";
+            for (let g in this.guests){
+                if (this.guests[g].plusone){
                     this.plusone = true;
-                    break;
+                }
+                if (this.guests[g].added){
+                    this.plusOneRadio = "true";
+                    this.plusFirst = this.guests[g].name.split(" ")[0];
+                    this.plusLast = this.guests[g].name.slice(this.plusFirst.length+1);
+                    this.getDiet(this.guests[g].guestid, 'a');
+
+                } else {
+                    if (this.guests[g].response == undefined){
+                        this.plusOneRadio = "";
+                    }
+                    this.radio[g] = this.guests[g].response + "";
+                    this.getDiet(this.guests[g].guestid, g);
                 }
             }
         })
@@ -75,18 +101,18 @@ export class RsvpComponent implements OnInit {
 
   deselect(values, i): void {
     if(values[0] == "none"){
-        this.models[i] = ["none"]
+        this.restrictions[i] = ["none"]
     }
   }
 
   removeNone(values, i): void {
     if(values[0] == "none"){
-        this.models[i] = values.slice(1);
+        this.restrictions[i] = values.slice(1);
     }
   }
 
   needOther(i): boolean {
-    if(this.models[i] && this.models[i].slice(-1)=="other"){
+    if(this.restrictions[i] && this.restrictions[i].includes("other")){
         return true;
     }
     else{
@@ -101,13 +127,22 @@ export class RsvpComponent implements OnInit {
     if (this.plusone) {
         this.addPlusOne()
     }
+    const dialogRef = this.dialog.open(DoneDialog, {
+        width: '350px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+        console.log("Closed");
+    });
   }
 
   updateResponse(i): void {
+    if (this.guests[i].added){
+        return;
+    }
     var guest = this.guests[i];
     var id = guest.guestid;
     var other = this.extra[i];
-    var restrictions = this.models[i];
+    var restrictions = this.restrictions[i];
     var rsvp = this.radio[i];
     if (rsvp == "false"){
         restrictions = {};
@@ -140,7 +175,7 @@ export class RsvpComponent implements OnInit {
   }
 
   addPlusOne(){
-    var restrictions = this.models['a'];
+    var restrictions = this.restrictions['a'];
     var other = this.extra['a'];
     var newGuest = {}
     newGuest["name"] = this.plusFirst + " " +this.plusLast;
@@ -171,4 +206,21 @@ export class RsvpComponent implements OnInit {
         }
     });
   }
+}
+
+@Component ({
+    selector: 'Done-Dialog',
+    template: `
+        <h2 mat-dialog-title>Thank you for your response!</h2>
+        <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>OK</button>
+        </mat-dialog-actions>
+    `
+})
+export class DoneDialog {
+    constructor(public dialogRef: MatDialogRef<DoneDialog>){}
+
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 }

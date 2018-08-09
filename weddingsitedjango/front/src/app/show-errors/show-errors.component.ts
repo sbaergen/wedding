@@ -15,8 +15,7 @@ export class ShowErrorsComponent implements OnInit {
   private control: AbstractControlDirective | AbstractControl;
 
   shouldShowErrors(): boolean {
-    return this.control &&
-      this.control.errors;
+    return !!(this.control && this.control.errors);
   }
 
   listOfErrors(): string[] {
