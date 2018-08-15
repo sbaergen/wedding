@@ -8,15 +8,16 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AccomodationsComponent } from './accomodations/accomodations.component';
 import { EventComponent } from './event/event.component';
-import { RegistryComponent } from './registry/registry.component';
+import { RegistryComponent, RegistryDialog } from './registry/registry.component';
 import { PhotosComponent } from './photos/photos.component';
 import { RsvpComponent, DoneDialog } from './rsvp/rsvp.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule, MatCardModule, MatInputModule, MatButtonModule, MatRadioModule, MatSelectModule, MatIconModule, MatDialogModule} from '@angular/material';
+import { MatListModule, MatCardModule, MatInputModule, MatButtonModule, MatRadioModule, MatSelectModule, MatIconModule, MatDialogModule, MatGridListModule, MatSidenavModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowErrorsComponent } from './show-errors/show-errors.component';
+import { SidebarModule } from 'ng-sidebar';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ShowErrorsComponent } from './show-errors/show-errors.component';
     HomeComponent,
     ShowErrorsComponent,
     DoneDialog,
+    RegistryDialog,
   ],
   imports: [
     BrowserModule,
@@ -48,9 +50,13 @@ import { ShowErrorsComponent } from './show-errors/show-errors.component';
     MatSelectModule,
     MatIconModule,
     MatDialogModule,
+    MatGridListModule,
+    MatSidenavModule,
+    SidebarModule.forRoot(),
   ],
   entryComponents: [
-    DoneDialog
+    DoneDialog,
+    RegistryDialog
   ],
   providers: [],
   bootstrap: [AppComponent]

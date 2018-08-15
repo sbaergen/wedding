@@ -20,8 +20,49 @@
         </div>
     </div>
 </nav>
-<mat-list role="items">
-    <mat-list-item role="listitem">
-        <mat-card> cardone </mat-card>
-    </mat-list-item>
-</mat-list>
+<ng-sidebar-container class="sidebar">
+    <ng-sidebar [(opened)]="opened" mode="push">
+        <strong>Contributions</strong>
+        <div *ngFor="let b of bought; let i = index">
+            <div *ngIf="bought[i]">
+                {{items[i].name}}
+                ${{bought[i].toFixed(2)}}
+            </div>
+        </div>
+        <br>
+        <strong>TOTAL</strong>
+        <hr>
+        ${{getTotal()}}
+        <hr>
+        <button mat-raised-button (click)="submit()">Confirm Commitment</button>
+    </ng-sidebar>
+    <div ng-sidebar-content>
+<mat-grid-list cols="2" rowHeight="2:1">
+    <div *ngFor="let item of items; let i = index">
+    <mat-grid-tile role="listitem">
+        <mat-card class="card_format">
+            <mat-card-header>
+                <mat-card-title><strong>{{item.name}}</strong></mat-card-title>
+            </mat-card-header>
+            <img mat-card-image class="card_image" max-width="100%" src="{{item.picture}}" alt="item.name">
+            <mat-card-content class="card_text">
+                PRICE: {{item.price}} <br>
+                Remaining: {{getRemaining(i)}} <br>
+                <span *ngIf="!contribute[i] && getRemaining(i)!=0">
+                <button mat-raised-button (click)="triggerContribute(i)">Contribute</button>
+            </span>
+                <span *ngIf="contribute[i]">
+                    Contribution: <br>$
+                <mat-form-field>
+                    <input matInput name="{{money[i] + amount}}" [(ngModel)]="money[i]" type="number" placeholder="Amount" value="0" required #amount="ngModel">
+                </mat-form-field>
+                <button mat-icon-button (click)="buy(i, money[i])" [disabled]="!checkValid(i)"><mat-icon>done</mat-icon></button>
+                <button mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>
+            </span>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    </div>
+</mat-grid-list>
+</div>
+</ng-sidebar-container>
