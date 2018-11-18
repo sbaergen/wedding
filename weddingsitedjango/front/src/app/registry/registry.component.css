@@ -1,13 +1,16 @@
 .card_image {
-    width: auto;
-    max-height: 80%;
+    max-width: 140px;
+    height: auto;
     float: left;
     margin: 1%;
 }
 
 .card_format {
     width: 90%;
-    height: 90%;
+    width: 480px;
+    height: auto;
+    min-height: 300px;
+    margin: 10px;
 }
 
 .card_text {
@@ -16,10 +19,67 @@
 
 .sidebar {
     position: absolute;
-    top: 60px;
-    bottom: 60px;
+}
+
+.navbar {
+    z-index: 1;
 }
 
 hr {
     margin: 0;
 }
+
+mat-grid-list {
+    height: 100%;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+}
+
+.CodeEntry {
+    text-align: center;
+}
+
+#codeInput {
+    width: 300px !important;
+}
+
+.jumbotron {
+    text-align: center;
+    padding: 10px 50px 10px 50px;
+}
+
+.jumbotron p {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.jumbotron h1 {
+    font-size: 40px
+}
+
+.blueButton {
+    background-color: #3f51b5;
+    color: white;
+    border-radius: 20px !important;
+}
+
+.iconButton {
+    color: #3f51b5;
+}
+
+html, button, mat-card{
+    font-family: 'Slabo 27px', serif;
+    font-size: 15px;
+}
+
+/*button {
+    font-family: 'Slabo 27px', serif;
+    font-size: 15px;
+}*/
+
+

@@ -1,6 +1,57 @@
 <h2 mat-dialog-title>Confirm Commitments</h2>
-<strong>Reminder: This is not a payment. This is only a way to designate money towards a specific purpose.</strong>
-<mat-dialog-actions>
-    <button mat-raised-button mat-dialog-close>Go Back</button>
-    <button mat-raised-button mat-dialog-close cdkFocsInitial>Confirm</button>
-</mat-dialog-actions>
+<mat-horizontal-stepper [linear]="true">
+    <mat-step label="Review Items" [stepControl]="firstGroup">
+        <strong>Reminder: This is not a payment. This is only a way to designate money towards a specific purpose.</strong>
+        <hr>
+        <mat-dialog-content>
+            <strong>Items Designated:</strong>
+            <hr>
+            <div *ngFor="let b of data.bought; let i = index">
+                <span *ngIf="b">
+                    <figure>
+                        <img float="right" src="{{data.items[i].picture}}">
+                    </figure>
+                    Item: {{data.items[i].name}}
+                    <br>
+                    <br>
+                    Designated: ${{b}}
+                    <hr>
+                </span>
+            </div>
+        </mat-dialog-content>
+        <strong>Total: ${{getTotal()}}</strong>
+        <mat-dialog-actions>
+            <button mat-raised-button [mat-dialog-close]="'Cancel'">Cancel</button>
+            <button mat-raised-button matStepperNext cdkFocusInitial>Next</button>
+        </mat-dialog-actions>
+    </mat-step>
+    <mat-step label="Information" [stepControl]="secondGroup">
+        <form #infoForm="ngForm">
+            <mat-form-field>
+                <input [(ngModel)]="personName" name="personName" matInput placeholder="Name (Optional)" value="Anonymous">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input [formControl]="email" name="emailValue" placeholder="Enter Email for Confirmation (Optional)" matInput>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput name="message" [(ngModel)]="message" placeholder="Message to Sean and Tiffanie (Optional)"></textarea>
+            </mat-form-field>
+        </form>
+        <mat-dialog-actions>
+            <button mat-raised-button [mat-dialog-close]="'Cancel'">Cancel</button>
+            <button mat-raised-button matStepperPrevious>Go Back</button>
+            <button mat-raised-button [disabled]="email.invalid" matStepperNext cdkFocusInitial>Next</button>
+        </mat-dialog-actions>
+    </mat-step>
+    <mat-step label="Confirmation Code" [stepControl]="thirdGroup">
+        Your confirmation code is: <strong>{{data.code}}</strong>
+        <br>
+        <br>
+        Please note this code to make changes to your contributions
+        <button mat-raised-button [mat-dialog-close]="'Cancel'">Cancel</button>
+        <button mat-raised-button matStepperPrevious>Go Back</button>
+        <button mat-raised-button [mat-dialog-close]="{'name':personName, 'email':email.value, 'message':message}" cdkFocusInitial>Done</button>
+    </mat-step>
+</mat-horizontal-stepper>

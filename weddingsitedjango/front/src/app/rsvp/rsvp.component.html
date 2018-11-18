@@ -1,3 +1,4 @@
+<html>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -20,19 +21,22 @@
         </div>
     </div>
 </nav>
-<body>
     <div *ngIf="!loggedin">
-        <form class="Code Entry">
+        <form class="center">
+            <p>Please enter the RSVP code found on your invitation:</p>
             <mat-form-field appearance="outline">
-                <input matInput placeholder="RSVP Code" #codeInput>
-                <mat-hint>The RSVP Code is on the Invitation</mat-hint>
+                <input matInput placeholder="RSVP Code" name="code" [(ngModel)]="code">
+                <mat-hint>The Code is on the Invitation</mat-hint>
             </mat-form-field>
-            <button mat-fab (click)="checkCode(codeInput)" color="primary">Submit</button>
+            <button mat-fab (click)="checkCode()" color="primary">Submit</button>
+            <div *ngIf="incorrect">
+                <mat-error>Incorrect Code!</mat-error>
+            </div>
         </form>
     </div>
     <div *ngIf="loggedin">
-        Enter your name:
-        <form class="Code Entry">
+        <p class="center">Enter your name:</p>
+        <form class="center">
             <mat-form-field appearance="outline">
             <input matInput ngModel name="firstNameLabel" placeholder="First Name" #firstName required>
             </mat-form-field>
@@ -41,37 +45,51 @@
             </mat-form-field>
             <button mat-fab (click)="getNames(firstName.value, lastName.value)" [disabled]="!firstName.value || !lastName.value" color="primary">Search</button>
         </form>
+        <div *ngIf="incorrect">
+                <mat-error class="center">Name not Found!</mat-error>
+            </div>
 
         <div *ngIf="guests.length!=0">
-            <form #rsvpForm="ngForm" (ngSubmit)="actionOnSubmit(rsvpForm)" novalidate>
+            <form #rsvpForm="ngForm" (ngSubmit)="actionOnSubmit(rsvpForm)" novalidate class="movein">
                 <div *ngFor="let g of guests; let i = index">
+                    <hr>
                     <span *ngIf="!g.added">
-                    {{g.name}}
-                    <mat-radio-group name="{{g.name + 'rsvp'}}" [(ngModel)]="radio[i]" required>
-                        <mat-radio-button color="primary" value="true">Yes :)</mat-radio-button>
-                        <mat-radio-button color="primary" value="false">No :(</mat-radio-button>
-                    </mat-radio-group>
-                    <span *ngIf="radio[i]=='true'">
-                        <mat-form-field>
-                          <mat-select name="{{g.name + 'dietSelect'}}" placeholder="Dietary Restrictions" [(ngModel)]="restrictions[i]" multiple required #select="ngModel">
-                            <mat-option (click)="deselect(restrictions[i], i)" value="none">None</mat-option>
-                            <mat-option (click)="removeNone(restrictions[i], i)" value="gluten">Gluten Free</mat-option>
-                            <mat-option (click)="removeNone(restrictions[i], i)" value="dairy">Dairy Free</mat-option>
-                            <mat-option (click)="removeNone(restrictions[i], i)" value="vegetarian">Vegetarian</mat-option>
-                            <mat-option (click)="removeNone(restrictions[i], i)" value="vegan">Vegan</mat-option>
-                            <mat-option (click)="removeNone(restrictions[i], i)" value="other">Other</mat-option>
-                          </mat-select>
-                        </mat-form-field>
-                        <show-errors [control]="select"></show-errors>
-                        <span *ngIf="needOther(i)">
+                    <h3>{{g.name}}</h3>
+                    <br>
+                        <mat-radio-group name="{{g.name + 'rsvp'}}" [(ngModel)]="radio[i]" required>
+                            <mat-radio-button color="primary" value="true">Attending :)</mat-radio-button>
+                            <mat-radio-button color="primary" value="false">Not Attending :(</mat-radio-button>
+                        </mat-radio-group>
+                        <span *ngIf="radio[i]=='true'">
+                            <mat-form-field>
+                                <mat-select name="{{g.name + 'dietSelect'}}" placeholder="Dietary Restrictions" [(ngModel)]="restrictions[i]" multiple required #select="ngModel">
+                                    <mat-option (click)="deselect(restrictions[i], i)" value="none">None</mat-option>
+                                    <mat-option (click)="removeNone(restrictions[i], i)" value="gluten">Gluten Free</mat-option>
+                                    <mat-option (click)="removeNone(restrictions[i], i)" value="dairy">Dairy Free</mat-option>
+                                    <mat-option (click)="removeNone(restrictions[i], i)" value="vegetarian">Vegetarian</mat-option>
+                                    <mat-option (click)="removeNone(restrictions[i], i)" value="vegan">Vegan</mat-option>
+                                    <mat-option (click)="removeNone(restrictions[i], i)" value="other">Other</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <span *ngIf="needOther(i)">
+                                <mat-form-field [style.fontSize.px]=12>
+                                    <textarea matInput name="{{g.name + 'otherDiet'}}" [(ngModel)]="extra[i]" default="" placeholder="Other Dietary Restictions" #ogother="ngModel"[maxlength]=100 required></textarea>
+                                </mat-form-field>
+                                <show-errors [control]="ogother"></show-errors>
+                            </span>
                             <mat-form-field [style.fontSize.px]=12>
-                                <textarea matInput name="{{g.name + 'otherDiet'}" [(ngModel)]="extra[i]" default="" placeholder="Other Dietary Restictions" required></textarea>
+                                <textarea matInput name="{{g.name + 'tea'}}" [(ngModel)]="tea[i]" default="" placeholder="Tea Suggestions" [maxlength]=100></textarea>
+                                <mat-hint>Tea you would drink at the reception</mat-hint>
+                            </mat-form-field>
+                            <mat-form-field [style.fontSize.px]=12>
+                                <textarea matInput name="{{g.name + 'game'}}" [(ngModel)]="game[i]" default="" placeholder="Board Game Suggestions" [maxlength]=100></textarea>
+                                <mat-hint>Game you would play at the reception</mat-hint>
                             </mat-form-field>
                         </span>
                     </span>
-                </span>
                 </div>
                 <div *ngIf="plusone">
+                    <hr>
                     Will you bring an additional guest?
                     <mat-radio-group name="plusRsvp" [(ngModel)]="plusOneRadio" required>
                         <mat-radio-button color="primary" value="true">Yes</mat-radio-button>
@@ -79,7 +97,7 @@
                     </mat-radio-group>
                     <div *ngIf="plusOneRadio=='true'">
                         <mat-form-field appearance="standard">
-                        <input [(ngModel)]="plusFirst" name="first"matInput placeholder="First Name" required>
+                        <input [(ngModel)]="plusFirst" name="first" matInput placeholder="First Name" required>
                         </mat-form-field>
                         <mat-form-field appearance="standard">
                         <input [(ngModel)]="plusLast" name="last" matInput placeholder="Last Name" required>
@@ -95,22 +113,32 @@
                                 <mat-option (click)="removeNone(restrictions['a'], 'a')" value="other">Other</mat-option>
                             </mat-select>
                             </mat-form-field>
-                            <show-errors [control]="plusSelect"></show-errors>
                             <span *ngIf="needOther('a')">
                                 <mat-form-field [style.fontSize.px]=12>
-                                    <textarea matInput name="plusOtherDiet" [(ngModel)]="extra['a']" default="" placeholder="Other Dietary Restictions" #other="ngModel" required></textarea>
+                                    <textarea matInput name="plusOtherDiet" [(ngModel)]="extra['a']" default="" placeholder="Other Dietary Restictions" [maxlength]=100 #other="ngModel" required></textarea>
                                 </mat-form-field>
                                 <show-errors [control]="other"></show-errors>
                             </span>
+                            <mat-form-field [style.fontSize.px]=12>
+                                <textarea matInput name="{{'otherTea'}}" [(ngModel)]="tea['a']" default="" placeholder="Tea Suggestions" [maxlength]=100></textarea>
+                                <mat-hint>Tea you would drink at the reception</mat-hint>
+                            </mat-form-field>
+                            <mat-form-field [style.fontSize.px]=12>
+                                <textarea matInput name="{{'otherGame'}}" [(ngModel)]="game['a']" default="" placeholder="Board Game Suggestions" [maxlength]=100></textarea>
+                                <mat-hint>Game you would play at the reception</mat-hint>
+                            </mat-form-field>
                         </span>
                     </div>
                 </div>
             </form>
-            <hr>
-            <div *ngIf="!rsvpForm.valid">There seems to be some missing information!</div>
-            <button mat-raised-button (click)="submitInfo()" [disabled]="!rsvpForm.valid">Submit RSVP</button>
+            <hr class="movein">
+            <div class=center *ngIf="!rsvpForm.valid">
+                <p style="color:red">There seems to be some missing information!</p>
+            </div>
+    <span class="outside">
+            <button class="submitButton" mat-raised-button (click)="submitInfo()" [disabled]="!rsvpForm.valid">Submit RSVP</button>
+        </span>
         </div>
     </div>
-    <div>Please contact us at <a href="mailto:sean.tiffanie@gmail.com">sean.tiffanie@gmail.com</a> if you have any questions</div>
-</body>
-
+    <p class="center" style="margin-top:10px">Please contact us at <a href="mailto:sean.tiffanie@gmail.com">sean.tiffanie@gmail.com</a> if you have any questions</p>
+</html>

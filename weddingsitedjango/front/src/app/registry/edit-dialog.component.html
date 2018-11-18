@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>Update Commitments</h2>
+<span *ngIf="!noItems()">
+    <mat-horizontal-stepper [linear]="true">
+        <mat-step label="Review Items">
+            <strong>Reminder: This is not a payment. This is only a way to designate money towards a specific purpose.</strong>
+            <hr>
+            <mat-dialog-content>
+                <strong>Items Designated:</strong>
+                <hr>
+                <div *ngFor="let b of data.bought; let i = index">
+                    <span *ngIf="b">
+                        <figure>
+                            <img float="right" src="{{data.items[i].picture}}">
+                        </figure>
+                        Item: {{data.items[i].name}}
+                        <br>
+                        <br>
+                        Designated: ${{b}}
+                        <hr>
+                    </span>
+                </div>
+            </mat-dialog-content>
+            <strong>Total: ${{getTotal()}}</strong>
+            <mat-dialog-actions>
+                <button mat-raised-button [mat-dialog-close]="'Cancel'">Cancel</button>
+                <button mat-raised-button matStepperNext cdkFocusInitial>Next</button>
+            </mat-dialog-actions>
+        </mat-step>
+        <mat-step label="Information">
+            <form [formGroup]="form">
+                <mat-form-field>
+                    <input formControlName="personName" name="personName" matInput placeholder="Name (Optional)">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input formControlName="email" name="email" placeholder="Enter Email for Confirmation (Optional)" matInput>
+                    <mat-error>{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput formControlName="message" name="message" placeholder="Message to Sean and Tiffanie (Optional)"></textarea>
+                </mat-form-field>
+            </form>
+            <mat-dialog-actions>
+                <button mat-raised-button [mat-dialog-close]="'Cancel'">Cancel</button>
+                <button mat-raised-button matStepperPrevious>Go Back</button>
+                <button mat-raised-button [disabled]="form.invalid" matStepperNext cdkFocusInitial>Next</button>
+            </mat-dialog-actions>
+        </mat-step>
+        <mat-step label="Confirmation Code">
+            Your confirmation code remains: <strong>{{data.code}}</strong>
+            <br>
+            <br>
+            Please note this code to make changes to your commitments
+            <button mat-raised-button [mat-dialog-close]="'Cancel'">Cancel</button>
+            <button mat-raised-button matStepperPrevious>Go Back</button>
+            <button mat-raised-button [mat-dialog-close]="{'name':form.controls.personName.value, 'email':form.controls.email.value, 'message':form.controls.message.value}" cdkFocusInitial>Done</button>
+        </mat-step>
+    </mat-horizontal-stepper>
+</span>
+<span *ngIf="noItems()">
+    <mat-dialog-content>
+        Remove all commitments? (To make a new commitment all information will need to be re-entered and a new code will be issued)
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button [mat-dialog-close]="'Cancel'" cdkFocusInitial>Cancel</button>
+        <button mat-raised-button [mat-dialog-close]="'Done'">Done</button>
+    </mat-dialog-actions>
+</span>

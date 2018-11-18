@@ -1,45 +1,42 @@
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MyNavbar" (click)="isCollapsed = !isCollapsed">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img height="30" src="./static/wedding/Weddinglogo.jpg"></a>
+<html>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MyNavbar" (click)="isCollapsed = !isCollapsed">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img height="30" src="./static/wedding/Weddinglogo.jpg"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="MyNavbar" [ngbCollapse]="isCollapsed">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="accomodations">Accomodations</a></li>
+                    <li><a href="event">Event Details</a></li>
+                    <li><a href="registry">Registry</a></li>
+                    <li><a href="photos">Photos</a></li>
+                    <li><a href="rsvp">RSVP</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="collapse navbar-collapse" id="MyNavbar" [ngbCollapse]="isCollapsed">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="accomodations">Accomodations</a></li>
-                <li><a href="event">Event Details</a></li>
-                <li><a href="registry">Registry</a></li>
-                <li><a href="photos">Photos</a></li>
-                <li><a href="rsvp">RSVP</a></li>
-            </ul>
+    </nav>
+        <img class=rounded src="./static/wedding/test.jpg" alt="logo">
+        <h1>Sean & Tiffanie's Wedding</h1>
+        <div class="thirty">
+            <a routerLink="/event">Details</a>
+            <br>
+            <a routerLink="/rsvp">RSVP</a>
+            <br>
+            <a routerLink="/accomodations">Accomodations</a>
+            <br>
+            <a routerLink="/registry">Registry</a>
+            <br>
+            <a routerLink="/photos">Photos</a>
+            <br>
         </div>
-    </div>
-</nav>
-<router-outlet></router-outlet>
+        <footer>
+            <p>Contact us if you have any questions at <a href="mailto:sean.tiffanie@gmail.com">sean.tiffanie@gmail.com</a></p>
+        </footer>
 
-<div style="text-align:center">
-        <button (click)="getGuests()">Get /guestsapi/ </button>
-</div>
-<div>
-    <h2>Wedding Details</h2>
-    June 15, 2018
-    <br>
-    3:00pm
-    <br>
-    First Mennonite Church
-    <hr>
-    <a routerLink="/rsvp">RSVP</a>
-    <br>
-    <a routerLink="/event">Full Event Details</a>
-    <br>
-    <a routerLink="/accomodations">Accomodations</a>
-    <br>
-    <a routerLink="/registry">Registry</a>
-    <br>
-    <a routerLink="/photos">Photos</a>
-</div>
+</html>

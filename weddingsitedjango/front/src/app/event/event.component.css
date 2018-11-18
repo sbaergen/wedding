@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Rouge+Script|Slabo+27px');
+
+h2 {
+    font-family: 'Rouge Script', cursive;
+    font-size: 48px;
+}
+
+p {
+    font-size: 20px;
+    font-family: 'Slabo 27px', serif;
+}

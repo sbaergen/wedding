@@ -1,0 +1,13 @@
+img {
+    float: right;
+    max-height: 60px;
+    display: inline-block;
+}
+
+input {
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+}

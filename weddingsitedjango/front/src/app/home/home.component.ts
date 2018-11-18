@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs';
-import 'rxjs/Rx';
-import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'app-home',
@@ -11,13 +7,7 @@ import 'rxjs/add/operator/toPromise';
 })
 export class HomeComponent implements OnInit {
 
-  url : string ='http://localhost:8000/wedding/guestsapi/';
-  constructor(private http : Http){}
-
-  public getGuests(){
-    this.http.get(this.url).toPromise().then((res)=>{console.log(res.json());
-  })
-  }
+  constructor(){}
 
   ngOnInit() {
   }

@@ -1,3 +1,4 @@
+<html>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -20,6 +21,10 @@
         </div>
     </div>
 </nav>
+<div class="jumbotron">
+            <h1>Registry</h1>
+            <p>Our registry is a bit different than other registries. Since we are having the wedding in Edmonton and not living in Edmonton, we want to avoid having to ship a lot of things back home. However, we still wanted to give you the opportunity to choose out a specific gift. Therefore, we have set up this page where you can designate a certain amount of money towards a certain item. We still ask that you only give us money, but we will only use your money towards the item it was meant for. Another benefit of this is that you can feel free to contribute to a portion of an item. Therefore you are completely free to spend however much you are comfortable with without feeling like you need to buy a whole item. After designating your contribution, you will have the opportunity to enter your name, email, and/or a message to go along with your gift. The email will be used to send you a record of what you contributed to and a code you can use to change your gift. These entries are completely optional. If you have any questions, please email us at <a href="mailto:sean.tiffanie@gmail.com">sean.tiffanie@gmail.com</a>.</p>
+        </div>
 <ng-sidebar-container class="sidebar">
     <ng-sidebar [(opened)]="opened" mode="push">
         <strong>Contributions</strong>
@@ -34,35 +39,54 @@
         <hr>
         ${{getTotal()}}
         <hr>
-        <button mat-raised-button (click)="submit()">Confirm Commitment</button>
+        <button class="blueButton" mat-raised-button (click)="submit()">Confirm Commitment</button>
     </ng-sidebar>
     <div ng-sidebar-content>
-<mat-grid-list cols="2" rowHeight="2:1">
-    <div *ngFor="let item of items; let i = index">
-    <mat-grid-tile role="listitem">
-        <mat-card class="card_format">
-            <mat-card-header>
-                <mat-card-title><strong>{{item.name}}</strong></mat-card-title>
-            </mat-card-header>
-            <img mat-card-image class="card_image" max-width="100%" src="{{item.picture}}" alt="item.name">
-            <mat-card-content class="card_text">
-                PRICE: {{item.price}} <br>
-                Remaining: {{getRemaining(i)}} <br>
-                <span *ngIf="!contribute[i] && getRemaining(i)!=0">
-                <button mat-raised-button (click)="triggerContribute(i)">Contribute</button>
-            </span>
-                <span *ngIf="contribute[i]">
-                    Contribution: <br>$
-                <mat-form-field>
-                    <input matInput name="{{money[i] + amount}}" [(ngModel)]="money[i]" type="number" placeholder="Amount" value="0" required #amount="ngModel">
+        <form class="CodeEntry">
+            <div *ngIf="!enterCode && !edit">
+                <button class="blueButton" mat-raised-button (click)="triggerCode()">Change Existing Contribution</button>
+            </div>
+            <div *ngIf="enterCode && !edit">
+                <mat-form-field appearance="outline" id="codeInput">
+                    <input matInput text-align="center" matTooltip="Your code can be found in your confirmation email" matTooltipPosition="left" placeholder="Confirmation Code (Not RSVP Code)" cdkTextareaAutosize #codeInput>
+                    <mat-hint>Email <a href="mailto:sean.tiffanie@gmail.com">sean.tiffanie@gmail.com</a> if you have lost your code</mat-hint>
                 </mat-form-field>
-                <button mat-icon-button (click)="buy(i, money[i])" [disabled]="!checkValid(i)"><mat-icon>done</mat-icon></button>
-                <button mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>
-            </span>
-            </mat-card-content>
-        </mat-card>
-    </mat-grid-tile>
+                <button mat-fab (click)="checkCode(codeInput)" color="primary" [disabled]="!codeInput.value">Submit</button>
+            </div>
+                <span *ngIf="edit && !enterCode">
+                    <button class="blueButton" mat-raised-button float="right" (click)="submit()">Save Changes</button>
+                </span>
+        </form>
+        <br>
+        <!-- <mat-grid-list cols="2" rowHeight="fit" gutterSize="10px"> -->
+            <div class="flex-container">
+            <div *ngFor="let item of items; let i = index">
+                <!-- <mat-grid-tile role="listitem"> -->
+                    <mat-card class="card_format">
+                        <mat-card-header>
+                            <mat-card-title><strong>{{item.name}}</strong></mat-card-title>
+                        </mat-card-header>
+                        <img mat-card-image class="card_image" max-width="100%" src="{{item.picture}}" alt="item.name">
+                        <mat-card-content class="card_text">
+                            PRICE: ${{item.price}} <br>
+                            Remaining: ${{getRemaining(i)}} <br>
+                            <span *ngIf="!contribute[i] && getRemaining(i)!=0">
+                                <button class="blueButton" mat-raised-button (click)="triggerContribute(i)">Contribute</button>
+                            </span>
+                            <span *ngIf="contribute[i]">
+                                Contribution: <br>$
+                                <mat-form-field>
+                                    <input matInput name="{{money[i] + amount}}" [(ngModel)]="money[i]" type="number" placeholder="Amount" value="0" required #amount="ngModel">
+                                </mat-form-field>
+                                <button class="iconButton" mat-icon-button (click)="buy(i, money[i])" [disabled]="!checkValid(i)"><mat-icon>done</mat-icon></button>
+                                <button class="iconButton" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>
+                            </span>
+                        </mat-card-content>
+                    </mat-card>
+                <!-- </mat-grid-tile> -->
+            </div>
+        </div>
+        <!-- </mat-grid-list> -->
     </div>
-</mat-grid-list>
-</div>
 </ng-sidebar-container>
+</html>

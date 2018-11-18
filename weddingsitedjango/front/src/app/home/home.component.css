@@ -1,0 +1,25 @@
+.rounded {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    background-size: cover;
+    background-image: url("./static/test.jpg")
+}
+
+h1 {
+    font-family: 'Rouge Script', cursive;
+    font-size: 48px;
+}
+
+.thirty {
+    font-size: 30px;
+    font-family: 'Slabo 27px', serif;
+}
+
+footer {
+    font-size: 15px;
+    font-family: 'Slabo 27px', serif;
+}

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { FormControl, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
@@ -12,22 +14,27 @@ import 'rxjs/add/operator/toPromise';
 })
 export class RsvpComponent implements OnInit {
   loggedin : boolean = false;
+  incorrect : boolean = false;
   found : boolean = false;
   plusone : boolean = false;
   guests = [];
   restrictions = [];
   plusFirst;
   plusLast;
+  code;
   plusOneRadio;
   radio = [];
   extra = [];
+  game = [];
+  tea = [];
   url : string='http://localhost:8000/wedding/guestsapi/';
   dieturl : string='http://localhost:8000/wedding/dietaryapi/';
+  contributionUrl = 'http://localhost:8000/wedding/contributionapi/'
   headers = new Headers({
     'Content-Type': 'application/json',
     'X-CSRFToken': this.getCookie('csrftoken')
   });
-  constructor(private http : Http, public dialog: MatDialog) { }
+  constructor(private http : Http, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
   }
@@ -41,11 +48,14 @@ export class RsvpComponent implements OnInit {
   }
 
 
-  checkCode(code): void {
-    if (code.value == "ST2019"){
+  checkCode(): void {
+    if (this.code.toUpperCase() == "ST2019"){
         this.loggedin = true;
+        this.incorrect = false;
     } else {
         this.loggedin = false;
+        this.incorrect = true;
+        this.code = "";
     }
   }
 
@@ -72,6 +82,13 @@ export class RsvpComponent implements OnInit {
     this.http.get(url1).toPromise().then((res)=>{
         return res.json()[0];
     }).then((res)=>{
+        if (!res){
+          this.incorrect = true;
+          return
+        }
+        else {
+          this.incorrect = false;
+        }
         var rsvp : number = res.rsvp;
         var url2 : string = this.url + "?rsvp=" + rsvp;
         this.http.get(url2).toPromise().then((resp)=>{
@@ -86,6 +103,8 @@ export class RsvpComponent implements OnInit {
                     this.plusFirst = this.guests[g].name.split(" ")[0];
                     this.plusLast = this.guests[g].name.slice(this.plusFirst.length+1);
                     this.getDiet(this.guests[g].guestid, 'a');
+                    this.tea['a'] = this.guests[g].tea;
+                    this.game['a'] = this.guests[g].game;
 
                 } else {
                     if (this.guests[g].response == undefined){
@@ -93,6 +112,8 @@ export class RsvpComponent implements OnInit {
                     }
                     this.radio[g] = this.guests[g].response + "";
                     this.getDiet(this.guests[g].guestid, g);
+                    this.tea[g] = this.guests[g].tea;
+                    this.game[g] = this.guests[g].game;
                 }
             }
         })
@@ -131,7 +152,67 @@ export class RsvpComponent implements OnInit {
         width: '350px'
     });
     dialogRef.afterClosed().subscribe(result => {
-        console.log("Closed");
+        if (result.email){
+          var email = {};
+          var body = "<p>Your RSVP details for Sean and Tiffanie's wedding on June 15, 2019 are below (To change anything just return to <a href=http://localhost:4200/rsvp>the rsvp page</a> and make any necessary changes):</p><hr>"
+          for (let g in this.guests){
+            if (this.guests[g].added && this.plusOneRadio == 'false'){
+              continue;
+            }
+            body = body + "<p><strong>" + this.guests[g].name + "</strong></p><p> Response: ";
+            if (!this.guests[g].added){
+              var attend = (this.radio[g] == 'true') ? "Yes" : "No";
+              body = body + attend;
+              if (this.radio[g] == 'true'){
+                body = body + "</p><p>Dietary Restrictions: "
+                var needExtra = false;
+                for (let r of this.restrictions[g]){
+                  if (r=="other"){
+                    needExtra = true;
+                  } else {
+                    body = body + r + ", ";
+                  }
+                }
+                if (needExtra){
+                  body = body + this.extra[g];
+                } else {
+                  body = body.slice(0,-2)
+                }
+                body = body + "</p><p>Game Suggestion: " + this.game[g];
+                body = body + "</p><p>Tea Suggestion: " + this.tea[g];
+              }
+            }
+            else {
+              body = body + "Yes";
+              body = body + "</p><p>Dietary Restrictions: ";
+              var needExtra = false;
+              for (let r of this.restrictions['a']){
+                if (r=="other"){
+                  needExtra = true;
+                } else {
+                  body = body + r + ", ";
+                }
+              }
+              if (needExtra){
+                body = body + this.extra['a'];
+              } else {
+                body = body.slice(0,-2)
+              }
+              body = body + "</p><p>Game Suggestion: " + this.game['a'];
+              body = body + "</p><p>Tea Suggestion: " + this.tea['a'];
+            }
+            body = body + "</p><hr>"
+          }
+          if (this.plusone && this.plusOneRadio == 'false'){
+              body = body + "<p>No Plus One</p>"
+            }
+          email["toEmail"]=result.email;
+          email["message"]=body;
+          email["subject"]="Your RSVP Details"
+          this.http.post(this.contributionUrl + "email/", JSON.stringify(email),new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
+          });
+        }
+        // this.router.navigateByUrl('/home');
     });
   }
 
@@ -170,6 +251,8 @@ export class RsvpComponent implements OnInit {
     } else if (rsvp == "false") {
         guest.response = false;
     }
+    guest.tea = this.tea[i];
+    guest.game = this.game[i];
     var putRequest = this.http.put(this.url + id + "/", JSON.stringify(guest), new RequestOptions({headers: this.headers}));
     putRequest.subscribe();
   }
@@ -183,6 +266,8 @@ export class RsvpComponent implements OnInit {
     newGuest["rsvp"] = this.guests[0].rsvp;
     newGuest["plusone"] = false;
     newGuest["added"] = true;
+    newGuest["game"] = this.game['a'];
+    newGuest["tea"] = this.tea['a'];
     this.http.delete(this.url + "?rsvp=" + this.guests[0].rsvp, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
         if (this.plusOneRadio == "true"){
             this.http.post(this.url, newGuest, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
@@ -212,15 +297,26 @@ export class RsvpComponent implements OnInit {
     selector: 'Done-Dialog',
     template: `
         <h2 mat-dialog-title>Thank you for your response!</h2>
+        <p>If you would like to receive an email confirmation of your rsvp, please enter your email below</p>
+        <form #rsvpEmail="ngForm">
+          <mat-form-field>
+            <input [formControl]="email" name="emailValue" placeholder="Enter Email for Confirmation (Optional)" matInput>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </form>
         <mat-dialog-actions>
-        <button mat-raised-button mat-dialog-close>OK</button>
+        <button mat-raised-button [mat-dialog-close]="{'email':email.value}" [disabled]="email.invalid">OK</button>
         </mat-dialog-actions>
     `
 })
 export class DoneDialog {
     constructor(public dialogRef: MatDialogRef<DoneDialog>){}
 
-    onNoClick(): void {
-        this.dialogRef.close();
+    email = new FormControl('', [Validators.email]);
+
+    getErrorMessage() {
+      return this.email.hasError('email') ? 'Not a valid email' :'';
     }
+
+
 }

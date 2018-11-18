@@ -8,7 +8,7 @@ import { RsvpComponent } from './rsvp/rsvp.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'accomodations', component: AccomodationsComponent },
     { path: 'event', component: EventComponent },
     { path: 'home', component: HomeComponent },
