@@ -16,11 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
+from django.conf.urls import url
 from django.conf.urls.static import static
+from rest_framework import routers
+
+from wedding.views import *
+
+router = routers.DefaultRouter()
+router.register(r'guestsapi', GuestDetailAPIView, base_name="guests")
+router.register(r'registryapi', RegistryDetailAPIView, base_name="registry")
+router.register(r'dietaryapi', DietaryDetailAPIView, base_name="dietary")
+router.register(r'contributionapi', ContributionDetailAPIView, base_name="contribution")
 
 urlpatterns = [
     path('admin', admin.site.urls),
-    path('wedding/', include('wedding.urls')),
+    path('wedding/', include(router.urls)),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

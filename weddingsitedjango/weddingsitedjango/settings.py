@@ -20,13 +20,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'd$i+z20b%6ht0egh0lvk8h5y#v)v(u1@ypwt7*c64ax($cg-45'
+with open('/etc/weddingsite/key.txt') as k:
+    SECRET_KEY = k.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'sean.tiffanie@gmail.com'
+EMAIL_PORT = 587
+
+with open('/etc/weddingsite/values.txt') as f:
+    EMAIL_HOST_PASSWORD = f.read().strip()
 
 # Application definition
 

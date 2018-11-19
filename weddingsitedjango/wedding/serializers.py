@@ -26,3 +26,8 @@ class PictureSerializer(ModelSerializer):
     class Meta(object):
         model = Picture
         fields = '__all__'
+
+class ContributionDetailSerializer(ModelSerializer):
+    class Meta(object):
+        model = Contribution
+        fields = '__all__'
