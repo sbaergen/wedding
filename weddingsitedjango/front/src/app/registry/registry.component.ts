@@ -30,8 +30,8 @@ export class RegistryComponent implements OnInit {
   editEmail = "";
   editMessage = "";
   code = "";
-  registryUrl = 'http://localhost:8000/wedding/registryapi/'
-  contributionUrl = 'http://localhost:8000/wedding/contributionapi/'
+  registryUrl = 'http://seanandtiffanie2019.ca/wedding/registryapi/'
+  contributionUrl = 'http://seanandtiffanie2019.ca/wedding/contributionapi/'
   headers = new Headers({
     'Content-Type': 'application/json',
     'X-CSRFToken': this.getCookie('csrftoken')
@@ -173,10 +173,10 @@ export class RegistryComponent implements OnInit {
               body = body + "<p>We realize that supporting us financially is not always possible. Please know that we still value your continued support in ways of prayer and love as we start this new chapter in our lives!</p><hr><p><strong>Sean and Tiffanie</strong></p>"
             }
             else if (!this.edit){
-              body = body + "<p>Thank you for your contribution to our Registry! What you have committed to can be found below. At the wedding there will be an opportunity to leave cash or cheque (payable to Sean Baergen) in order to pay for your committments. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to modify your commitment, just return to <a href=http://localhost:4200/registry>the registry</a> and enter in your code: <strong>" + this.code + "</strong>";
+              body = body + "<p>Thank you for your contribution to our Registry! What you have committed to can be found below. At the wedding there will be an opportunity to leave cash or cheque (payable to Sean Baergen) in order to pay for your committments. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to modify your commitment, just return to <a href=http://seanandtiffanie2019.ca/registry>the registry</a> and enter in your code: <strong>" + this.code + "</strong>";
             }
             else {
-              body = body + "<p>Your contribution has been modified. What you have committed to can be found below. At the wedding there will be an opportunity to leave cash or cheque (payable to Sean Baergen) in order to pay for your committments. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to further modify your commitment, just return to <a href=http://localhost:4200/registry>the registry</a> and enter in your code: <strong>" + this.code + "</strong>";
+              body = body + "<p>Your contribution has been modified. What you have committed to can be found below. At the wedding there will be an opportunity to leave cash or cheque (payable to Sean Baergen) in order to pay for your committments. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to further modify your commitment, just return to <a href=http://http://seanandtiffanie2019.ca/registry>the registry</a> and enter in your code: <strong>" + this.code + "</strong>";
             }
             if (this.getTotal() != 0){
               body = body + "<h3>Items Commited To</h3><hr>";

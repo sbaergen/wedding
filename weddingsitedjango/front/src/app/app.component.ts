@@ -11,7 +11,7 @@ import 'rxjs/add/operator/toPromise';
 })
 export class AppComponent {
   title = 'Sean and Tiffanie\'s Wedding';
-  url : string ='http://localhost:8000/guest/all/';
+  url : string ='http://seanandtiffanie2019.ca/guest/all/';
   constructor(private http : Http){}
   public getGuests(){
     this.http.get(this.url).toPromise().then((res)=>{console.log(res.json());

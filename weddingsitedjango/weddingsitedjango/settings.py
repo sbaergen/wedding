@@ -20,20 +20,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('/etc/weddingsite/key.txt') as k:
+with open(BASE_DIR + '/etc/weddingsite/key.txt') as k:
     SECRET_KEY = k.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com']
+# ALLOWED_HOSTS = ['*']
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'sean.tiffanie@gmail.com'
 EMAIL_PORT = 587
 
-with open('/etc/weddingsite/values.txt') as f:
+with open(BASE_DIR + '/etc/weddingsite/values.txt') as f:
     EMAIL_HOST_PASSWORD = f.read().strip()
 
 # Application definition
@@ -118,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Toronto'
 
 USE_I18N = True
 
@@ -129,6 +130,10 @@ USE_TZ = True
 CORS_ORIGIN_ALLOW_ALL = True
 
 ANGULAR_APP_DIR = os.path.join(BASE_DIR, 'front/dist')
+
+X_FRAME_OPTIONS = 'ALLOW'
+
+XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']
 
 
 # Static files (CSS, JavaScript, Images)

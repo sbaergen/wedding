@@ -27,9 +27,9 @@ export class RsvpComponent implements OnInit {
   extra = [];
   game = [];
   tea = [];
-  url : string='http://localhost:8000/wedding/guestsapi/';
-  dieturl : string='http://localhost:8000/wedding/dietaryapi/';
-  contributionUrl = 'http://localhost:8000/wedding/contributionapi/'
+  url : string='http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com/wedding/guestsapi/';
+  dieturl : string='http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com/wedding/dietaryapi/';
+  contributionUrl = 'http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com/wedding/contributionapi/'
   headers = new Headers({
     'Content-Type': 'application/json',
     'X-CSRFToken': this.getCookie('csrftoken')
@@ -154,7 +154,7 @@ export class RsvpComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
         if (result.email){
           var email = {};
-          var body = "<p>Your RSVP details for Sean and Tiffanie's wedding on June 15, 2019 are below (To change anything just return to <a href=http://localhost:4200/rsvp>the rsvp page</a> and make any necessary changes):</p><hr>"
+          var body = "<p>Your RSVP details for Sean and Tiffanie's wedding on June 15, 2019 are below (To change anything just return to <a href=http://seanandtiffanie2019.ca/rsvp>the rsvp page</a> and make any necessary changes):</p><hr>"
           for (let g in this.guests){
             if (this.guests[g].added && this.plusOneRadio == 'false'){
               continue;
