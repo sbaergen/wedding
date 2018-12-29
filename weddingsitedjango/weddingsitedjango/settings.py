@@ -26,7 +26,7 @@ with open(BASE_DIR + '/etc/weddingsite/key.txt') as k:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com', 'localhost']
 # ALLOWED_HOSTS = ['*']
 
 EMAIL_USE_TLS = True
