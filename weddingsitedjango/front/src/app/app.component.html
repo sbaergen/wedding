@@ -1,1 +1,23 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MyNavbar" (click)="isCollapsed = !isCollapsed">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img height="30" src="./static/wedding/Weddinglogo.jpg"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="MyNavbar" [ngbCollapse]="isCollapsed">
+            <ul class="nav navbar-nav">
+                <li><a [routerLink]="['/']">Home</a></li>
+                <li><a [routerLink]="['/accomodations']">Accomodations</a></li>
+                <li><a [routerLink]="['/event']">Event Details</a></li>
+                <li><a [routerLink]="['/registry']">Registry</a></li>
+                <li><a [routerLink]="['/photos']">Photos</a></li>
+                <li><a [routerLink]="['/rsvp']">RSVP</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <router-outlet></router-outlet>

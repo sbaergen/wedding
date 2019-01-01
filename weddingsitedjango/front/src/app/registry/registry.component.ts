@@ -30,8 +30,8 @@ export class RegistryComponent implements OnInit {
   editEmail = "";
   editMessage = "";
   code = "";
-  registryUrl = 'http://seanandtiffanie2019.ca/wedding/registryapi/'
-  contributionUrl = 'http://seanandtiffanie2019.ca/wedding/contributionapi/'
+  registryUrl = '/wedding/registryapi/'
+  contributionUrl = '/wedding/contributionapi/'
   headers = new Headers({
     'Content-Type': 'application/json',
     'X-CSRFToken': this.getCookie('csrftoken')
