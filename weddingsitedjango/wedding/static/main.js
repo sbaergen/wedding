@@ -1033,9 +1033,11 @@ var RsvpComponent = /** @class */ (function () {
         this.extra = [];
         this.game = [];
         this.tea = [];
-        this.url = 'http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com/wedding/guestsapi/';
-        this.dieturl = 'http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com/wedding/dietaryapi/';
-        this.contributionUrl = 'http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com/wedding/contributionapi/';
+        this.host = 'http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com';
+        // host = 'http://localhost:8000'
+        this.url = this.host + '/wedding/guestsapi/';
+        this.dieturl = this.host + '/wedding/dietaryapi/';
+        this.contributionUrl = this.host + '/';
         this.headers = new _angular_http__WEBPACK_IMPORTED_MODULE_2__["Headers"]({
             'Content-Type': 'application/json',
             'X-CSRFToken': this.getCookie('csrftoken')
@@ -1236,7 +1238,7 @@ var RsvpComponent = /** @class */ (function () {
         if (rsvp == "false") {
             restrictions = {};
         }
-        this.http.delete(this.dieturl + "?guest=" + id, id).toPromise().then(function (res) {
+        this.http.delete(this.dieturl + "?guest=" + id, new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: this.headers })).toPromise().then(function (res) {
             for (var _i = 0, restrictions_1 = restrictions; _i < restrictions_1.length; _i++) {
                 var r = restrictions_1[_i];
                 if (r == 'none') {
@@ -1254,7 +1256,7 @@ var RsvpComponent = /** @class */ (function () {
                 dietRequest.subscribe();
             }
         });
-        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_2__["Headers"]();
+        // var headers = new Headers();
         if (rsvp == "true") {
             guest.response = true;
         }

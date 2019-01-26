@@ -23,10 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 with open(BASE_DIR + '/etc/weddingsite/key.txt') as k:
     SECRET_KEY = k.read().strip()
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com', 'localhost']
+ALLOWED_HOSTS = ['django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com', 'localhost',
+    '99.79.1.247']
 # ALLOWED_HOSTS = ['*']
 
 EMAIL_USE_TLS = True
@@ -34,8 +36,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'sean.tiffanie@gmail.com'
 EMAIL_PORT = 587
 
-with open(BASE_DIR + '/etc/weddingsite/values.txt') as f:
-    EMAIL_HOST_PASSWORD = f.read().strip()
+# with open(BASE_DIR + '/etc/weddingsite/values.txt') as f:
+#     EMAIL_HOST_PASSWORD = f.read().strip()
+EMAIL_HOST_PASSWORD = 'BaergenTse2019';
 
 # Application definition
 
@@ -48,7 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'django_mysql'
 ]
 
 MIDDLEWARE = [
@@ -87,12 +91,29 @@ WSGI_APPLICATION = 'weddingsitedjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
     }
-}
+
+else:
+    DATABASES = {
+        'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'localdb',
+        'USER': 'root',
+        'PASSWORD': 'Gingerbeef2019',
+        'HOST': '',
+        'PORT': ''
+        }
+    }
 
 
 # Password validation

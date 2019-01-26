@@ -27,9 +27,11 @@ export class RsvpComponent implements OnInit {
   extra = [];
   game = [];
   tea = [];
-  url : string='http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com/wedding/guestsapi/';
-  dieturl : string='http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com/wedding/dietaryapi/';
-  contributionUrl = 'http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com/wedding/contributionapi/'
+  host = 'http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com'
+  // host = 'http://localhost:8000'
+  url : string=this.host + '/wedding/guestsapi/';
+  dieturl : string=this.host + '/wedding/dietaryapi/';
+  contributionUrl = this.host + '/'
   headers = new Headers({
     'Content-Type': 'application/json',
     'X-CSRFToken': this.getCookie('csrftoken')
@@ -228,7 +230,7 @@ export class RsvpComponent implements OnInit {
     if (rsvp == "false"){
         restrictions = {};
     }
-    this.http.delete(this.dieturl + "?guest=" + id, id).toPromise().then((res)=>{
+    this.http.delete(this.dieturl + "?guest=" + id, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
         for (let r of restrictions){
             if (r == 'none'){
                 break;
@@ -245,7 +247,7 @@ export class RsvpComponent implements OnInit {
         }
     });
 
-    var headers = new Headers();
+    // var headers = new Headers();
     if (rsvp == "true"){
         guest.response = true;
     } else if (rsvp == "false") {

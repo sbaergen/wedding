@@ -12,6 +12,7 @@ from django.core.mail import send_mail
 from .serializers import *
 from wedding.models import *
 from weddingsitedjango.settings import EMAIL_HOST_USER
+from django.views.decorators.csrf import csrf_exempt
 
 class GuestDetailAPIView(ModelViewSet):
     serializer_class = GuestDetailSerializer
@@ -28,6 +29,7 @@ class GuestDetailAPIView(ModelViewSet):
             queryset = queryset.filter(added=added_param)
         return queryset
 
+    @csrf_exempt
     def put(self, request, pk):
         try:
             guest = Guest.objects.get(pk.data.guestid)
@@ -39,6 +41,7 @@ class GuestDetailAPIView(ModelViewSet):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @csrf_exempt
     def delete(self, request):
         rsvp_param = self.request.query_params.get('rsvp')
         record = Guest.objects.filter(rsvp=rsvp_param, added="True")
@@ -49,6 +52,7 @@ class RegistryDetailAPIView(ModelViewSet):
     queryset = Registry.objects.all()
     serializer_class = RegistryDetailSerializer
 
+    @csrf_exempt
     def patch(self, request, pk):
         item = self.get_object(pk)
         serialier = RegistryDetailSerializer(item, data=request.data, partial=True)
@@ -60,6 +64,7 @@ class RegistryDetailAPIView(ModelViewSet):
 class DietaryDetailAPIView(ModelViewSet):
     serializer_class = DietaryDetailSerializer
 
+    @csrf_exempt
     def get_queryset(self):
         queryset = Dietary.objects.all()
         guest_param = self.request.query_params.get('guest')
@@ -67,6 +72,8 @@ class DietaryDetailAPIView(ModelViewSet):
         if guest_param is not None:
             queryset = Dietary.objects.filter(guest_id=guest_param)
         return queryset
+
+    @csrf_exempt
     def delete(self, request):
         guest_param = self.request.query_params.get('guest')
         record = Dietary.objects.filter(guest_id=guest_param)
@@ -96,6 +103,7 @@ class ContributionDetailAPIView(ModelViewSet):
             queryset = queryset.filter(code = code_param)
         return queryset
 
+    @csrf_exempt
     def delete(self, request):
         code_param = self.request.query_params.get('code')
         record = Contribution.objects.filter(code = code_param)
@@ -103,6 +111,7 @@ class ContributionDetailAPIView(ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(methods=['post'], detail=False)
+    @csrf_exempt
     def email(self, request, pk=None):
         print(request.data)
         send_mail(request.data["subject"], "TEST", EMAIL_HOST_USER, [request.data["toEmail"]], html_message=request.data["message"], fail_silently=False)
