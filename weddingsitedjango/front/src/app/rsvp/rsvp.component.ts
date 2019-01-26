@@ -27,7 +27,7 @@ export class RsvpComponent implements OnInit {
   extra = [];
   game = [];
   tea = [];
-  host = 'http://django-env.juxsripmvg.ca-central-1.elasticbeanstalk.com'
+  host = 'http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com'
   // host = 'http://localhost:8000'
   url : string=this.host + '/wedding/guestsapi/';
   dieturl : string=this.host + '/wedding/dietaryapi/';
