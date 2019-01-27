@@ -31,7 +31,7 @@ export class RsvpComponent implements OnInit {
   // host = 'http://localhost:8000'
   url : string=this.host + '/wedding/guestsapi/';
   dieturl : string=this.host + '/wedding/dietaryapi/';
-  contributionUrl = this.host + '/'
+  contributionUrl = this.host + '/wedding/contributionapi'
   headers = new Headers({
     'Content-Type': 'application/json',
     'X-CSRFToken': this.getCookie('csrftoken')
@@ -273,7 +273,7 @@ export class RsvpComponent implements OnInit {
     this.http.delete(this.url + "?rsvp=" + this.guests[0].rsvp, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
         if (this.plusOneRadio == "true"){
             this.http.post(this.url, newGuest, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
-                this.http.delete(this.dieturl + "?guest=" + res.json().guestid).toPromise().then(()=>{
+                this.http.delete(this.dieturl + "?guest=" + res.json().guestid, new RequestOptions({headers: this.headers})).toPromise().then(()=>{
                     for (let r of restrictions){
                         if (r == 'none'){
                             break;
