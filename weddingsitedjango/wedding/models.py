@@ -10,6 +10,7 @@ class Guest(models.Model):
     added = models.BooleanField(default=False)
     tea = models.CharField(max_length=100, blank=True)
     game = models.CharField(max_length=100, blank=True)
+    restrictions = models.CharField(max_length=500, blank=True)
     def __str__(self):
         return self.name
 
@@ -23,7 +24,7 @@ class Dietary(models.Model):
     guest_id = models.ForeignKey(Guest, on_delete=models.CASCADE)
     restriction = models.CharField(max_length=100)
     class Meta:
-        unique_together =(("guest_id", "restriction"),)
+        unique_together =(("guest_id", "restriction"))
 
 class Picture(models.Model):
     picture = models.ImageField(upload_to='pictures/')

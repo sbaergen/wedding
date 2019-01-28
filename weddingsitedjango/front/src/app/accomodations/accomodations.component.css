@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Rouge+Script|Slabo+27px');
+
 html {
     color: white;
     background-color: #D0E6EE;
+}
+
+h2 {
+    font-family: 'Rouge Script', cursive;
+    font-size: 48px;
 }
 
 figure {
     float: right;
     max-width: 50%;
 }
+
 p {
     font-size: 20px;
     font-family: 'Slabo 27px', serif;

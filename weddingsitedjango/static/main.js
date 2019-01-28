@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "html {\n    color: white;\n    background-color: #D0E6EE;\n}\n\nfigure {\n    float: right;\n    max-width: 50%;\n}\n\np {\n    font-size: 20px;\n    font-family: 'Slabo 27px', serif;\n}\n"
+module.exports = "@import url('https://fonts.googleapis.com/css?family=Rouge+Script|Slabo+27px');\n\nhtml {\n    color: white;\n    background-color: #D0E6EE;\n}\n\nh2 {\n    font-family: 'Rouge Script', cursive;\n    font-size: 48px;\n}\n\nfigure {\n    float: right;\n    max-width: 50%;\n}\n\np {\n    font-size: 20px;\n    font-family: 'Slabo 27px', serif;\n}\n"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = "html {\n    color: white;\n    background-color: #D0E6EE;\n}\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<figure>\n<iframe width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?q=place_id:ChIJGyT-PdweoFMR-pJ0q0j0oVo&key=AIzaSyCl27vT153QwUXeuFuopKm5M5TLQUlKRNU\" allowfullscreen></iframe></figure>\n<p> If you require accomodations in Edmonton, we have reserved a block of rooms from June 14-16 near the venue for your convienence at:</p>\n<br>\n<p><strong>Holiday Inn Express & Suites Edmonton South</strong></p>\n<p>2440 Calgary Trail</p>\n<p>Edmonton, AB, T6J 5J6</p>\n<p>1-780-440-5000</p>\n<p><a href=\"http://bit.ly/HIExpressYEG\">http://bit.ly/HIExpressYEG</a>\n<p><strong>Please book by May 14 with the group name \"Sean and Tiffanie Wedding\"</strong></p>\n\n"
+module.exports = "<figure>\n<iframe width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?q=place_id:ChIJGyT-PdweoFMR-pJ0q0j0oVo&key=AIzaSyCl27vT153QwUXeuFuopKm5M5TLQUlKRNU\" allowfullscreen></iframe></figure>\n<h2>Accomodations</h2>\n<p> If you require accomodations in Edmonton, we have reserved a block of rooms from June 14-16 near the venue for your convienence at:</p>\n<br>\n<p><strong>Holiday Inn Express & Suites Edmonton South</strong></p>\n<p>2440 Calgary Trail</p>\n<p>Edmonton, AB, T6J 5J6</p>\n<p>1-780-440-5000</p>\n<p><a href=\"http://bit.ly/HIExpressYEG\">http://bit.ly/HIExpressYEG</a>\n<p><strong>Please book by May 14 with the group name \"Sean and Tiffanie Wedding\"</strong></p>\n\n"
 
 /***/ }),
 
@@ -161,7 +161,7 @@ module.exports = "\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img height=\"30\" src=\"./static/wedding/Weddinglogo.jpg\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a [routerLink]=\"['/']\">Home</a></li>\n                <li><a [routerLink]=\"['/accomodations']\">Accomodations</a></li>\n                <li><a [routerLink]=\"['/event']\">Event Details</a></li>\n                <li><a [routerLink]=\"['/registry']\">Registry</a></li>\n                <li><a [routerLink]=\"['/photos']\">Photos</a></li>\n                <li><a [routerLink]=\"['/rsvp']\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<router-outlet></router-outlet>\n"
+module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img height=\"30\" src=\"./static/wedding/Weddinglogo.png\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a [routerLink]=\"['/']\">Home</a></li>\n                <li><a [routerLink]=\"['/accomodations']\">Accomodations</a></li>\n                <li><a [routerLink]=\"['/event']\">Event Details</a></li>\n                <li><a [routerLink]=\"['/registry']\">Registry</a></li>\n                <li><a [routerLink]=\"['/photos']\">Photos</a></li>\n                <li><a [routerLink]=\"['/rsvp']\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -342,7 +342,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@import url('https://fonts.googleapis.com/css?family=Rouge+Script|Slabo+27px');\n\nh2 {\n    font-family: 'Rouge Script', cursive;\n    font-size: 48px;\n}\n\np {\n    font-size: 20px;\n    font-family: 'Slabo 27px', serif;\n}\n"
+module.exports = "@import url('https://fonts.googleapis.com/css?family=Rouge+Script|Slabo+27px');\n\nh2 {\n    font-family: 'Rouge Script', cursive;\n    font-size: 48px;\n}\n\np {\n    font-size: 20px;\n    font-family: 'Slabo 27px', serif;\n}\n\nfigure {\n    float: right;\n    max-width: 50%;\n}\n"
 
 /***/ }),
 
@@ -405,7 +405,7 @@ var EventComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".rounded {\n    border-radius: 50%;\n    width: 300px;\n    height: 300px;\n    display: block;\n    margin-right: auto;\n    margin-left: auto;\n    background-size: cover;\n}\n\nh1 {\n    font-family: 'Rouge Script', cursive;\n    font-size: 48px;\n}\n\n.thirty {\n    font-size: 30px;\n    font-family: 'Slabo 27px', serif;\n}\n\nfooter {\n    font-size: 15px;\n    font-family: 'Slabo 27px', serif;\n}\n"
+module.exports = ".rounded {\n    border-radius: 50%;\n    width: 300px;\n    height: 300px;\n    display: block;\n    margin-right: auto;\n    margin-left: auto;\n    background-size: cover;\n    overflow: hidden;\n}\n\n.shrink {\n    height: 300px;\n    position: relative;\n    left: -60px;\n\n}\n\nh1 {\n    font-family: 'Rouge Script', cursive;\n    font-size: 48px;\n}\n\n.thirty {\n    font-size: 30px;\n    font-family: 'Slabo 27px', serif;\n}\n\nfooter {\n    font-size: 15px;\n    font-family: 'Slabo 27px', serif;\n}\n"
 
 /***/ }),
 
@@ -416,7 +416,7 @@ module.exports = ".rounded {\n    border-radius: 50%;\n    width: 300px;\n    he
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n        <img class=rounded src=\"./static/wedding/test.jpg\" alt=\"logo\">\n        <h1>Sean & Tiffanie's Wedding</h1>\n        <div class=\"thirty\">\n            <a routerLink=\"/event\">Details</a>\n            <br>\n            <a routerLink=\"/rsvp\">RSVP</a>\n            <br>\n            <a routerLink=\"/accomodations\">Accomodations</a>\n            <br>\n            <a routerLink=\"/registry\">Registry</a>\n            <br>\n            <a routerLink=\"/photos\">Photos</a>\n            <br>\n        </div>\n        <footer>\n            <p>Contact us if you have any questions at <a href=\"mailto:sean.tiffanie@gmail.com\">sean.tiffanie@gmail.com</a></p>\n        </footer>\n\n"
+module.exports = "\n        <div class=\"rounded\">\n            <img class=\"shrink\" src=\"./static/wedding/frontPhoto.jpg\" alt=\"logo\">\n        </div>\n        <h1>Sean & Tiffanie's Wedding</h1>\n        <div class=\"thirty\">\n            <a routerLink=\"/event\">Details</a>\n            <br>\n            <a routerLink=\"/rsvp\">RSVP</a>\n            <br>\n            <a routerLink=\"/accomodations\">Accomodations</a>\n            <br>\n            <a routerLink=\"/registry\">Registry</a>\n            <br>\n            <a routerLink=\"/photos\">Photos</a>\n            <br>\n        </div>\n        <footer>\n            <p>Contact us if you have any questions at <a href=\"mailto:sean.tiffanie@gmail.com\">sean.tiffanie@gmail.com</a></p>\n        </footer>\n\n"
 
 /***/ }),
 
@@ -1028,16 +1028,15 @@ var RsvpComponent = /** @class */ (function () {
         this.found = false;
         this.plusone = false;
         this.guests = [];
-        this.restrictions = [];
         this.radio = [];
         this.extra = [];
         this.game = [];
         this.tea = [];
-        this.host = 'http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com';
-        // host = 'http://localhost:8000'
+        this.restrictions = [];
+        // host = 'http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com'
+        this.host = 'http://localhost:8000';
         this.url = this.host + '/wedding/guestsapi/';
-        this.dieturl = this.host + '/wedding/dietaryapi/';
-        this.contributionUrl = this.host + '/';
+        this.contributionUrl = this.host + '/wedding/contributionapi/';
         this.headers = new _angular_http__WEBPACK_IMPORTED_MODULE_2__["Headers"]({
             'Content-Type': 'application/json',
             'X-CSRFToken': this.getCookie('csrftoken')
@@ -1063,24 +1062,21 @@ var RsvpComponent = /** @class */ (function () {
             this.code = "";
         }
     };
-    RsvpComponent.prototype.getDiet = function (guestid, index) {
-        var _this = this;
-        return this.http.get(this.dieturl + "?guest=" + guestid).toPromise().then(function (res) {
-            _this.restrictions[index] = [];
-            for (var _i = 0, _a = res.json(); _i < _a.length; _i++) {
-                var r = _a[_i];
-                if (!['gluten', 'dairy', 'vegetarian', 'vegan'].includes(r.restriction)) {
-                    _this.restrictions[index].push("other");
-                    _this.extra[index] = r.restriction;
-                }
-                else {
-                    _this.restrictions[index].push(r.restriction);
-                }
+    RsvpComponent.prototype.getDiet = function (restrictions, index) {
+        this.restrictions[index] = [];
+        for (var _i = 0, _a = JSON.parse(restrictions); _i < _a.length; _i++) {
+            var r = _a[_i];
+            if (!['gluten', 'dairy', 'vegetarian', 'vegan'].includes(r)) {
+                this.restrictions[index].push("other");
+                this.extra[index] = r;
             }
-            if (_this.restrictions[index].length == 0) {
-                _this.restrictions[index].push('none');
+            else {
+                this.restrictions[index].push(r);
             }
-        });
+        }
+        if (this.restrictions[index].length == 0) {
+            this.restrictions[index].push('none');
+        }
     };
     RsvpComponent.prototype.getNames = function (first, last) {
         var _this = this;
@@ -1106,10 +1102,11 @@ var RsvpComponent = /** @class */ (function () {
                         _this.plusone = true;
                     }
                     if (_this.guests[g].added) {
+                        _this.addedId = _this.guests[g].guestid;
                         _this.plusOneRadio = "true";
                         _this.plusFirst = _this.guests[g].name.split(" ")[0];
                         _this.plusLast = _this.guests[g].name.slice(_this.plusFirst.length + 1);
-                        _this.getDiet(_this.guests[g].guestid, 'a');
+                        _this.getDiet(_this.guests[g].restrictions, 'a');
                         _this.tea['a'] = _this.guests[g].tea;
                         _this.game['a'] = _this.guests[g].game;
                     }
@@ -1118,7 +1115,7 @@ var RsvpComponent = /** @class */ (function () {
                             _this.plusOneRadio = "";
                         }
                         _this.radio[g] = _this.guests[g].response + "";
-                        _this.getDiet(_this.guests[g].guestid, g);
+                        _this.getDiet(_this.guests[g].restrictions, g);
                         _this.tea[g] = _this.guests[g].tea;
                         _this.game[g] = _this.guests[g].game;
                     }
@@ -1222,11 +1219,10 @@ var RsvpComponent = /** @class */ (function () {
                 _this.http.post(_this.contributionUrl + "email/", JSON.stringify(email), new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: _this.headers })).toPromise().then(function (res) {
                 });
             }
-            // this.router.navigateByUrl('/home');
+            _this.router.navigateByUrl('/home');
         });
     };
     RsvpComponent.prototype.updateResponse = function (i) {
-        var _this = this;
         if (this.guests[i].added) {
             return;
         }
@@ -1238,25 +1234,15 @@ var RsvpComponent = /** @class */ (function () {
         if (rsvp == "false") {
             restrictions = {};
         }
-        this.http.delete(this.dieturl + "?guest=" + id, new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: this.headers })).toPromise().then(function (res) {
-            for (var _i = 0, restrictions_1 = restrictions; _i < restrictions_1.length; _i++) {
-                var r = restrictions_1[_i];
-                if (r == 'none') {
-                    break;
-                }
-                var dietBody = {};
-                if (r == 'other') {
-                    dietBody["restriction"] = other;
-                }
-                else {
-                    dietBody["restriction"] = r;
-                }
-                dietBody["guest_id"] = id;
-                var dietRequest = _this.http.post(_this.dieturl, dietBody, new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: _this.headers }));
-                dietRequest.subscribe();
+        for (var r in restrictions) {
+            if (restrictions[r] == 'none') {
+                break;
             }
-        });
-        // var headers = new Headers();
+            if (restrictions[r] == 'other') {
+                restrictions[r] = other;
+                break;
+            }
+        }
         if (rsvp == "true") {
             guest.response = true;
         }
@@ -1265,11 +1251,16 @@ var RsvpComponent = /** @class */ (function () {
         }
         guest.tea = this.tea[i];
         guest.game = this.game[i];
+        guest.restrictions = JSON.stringify(restrictions);
         var putRequest = this.http.put(this.url + id + "/", JSON.stringify(guest), new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: this.headers }));
         putRequest.subscribe();
     };
     RsvpComponent.prototype.addPlusOne = function () {
-        var _this = this;
+        console.log(this.plusOneRadio);
+        if (this.plusOneRadio == "false") {
+            this.http.delete(this.url + "?rsvp=" + this.guests[0].rsvp, new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: this.headers })).toPromise().then(function (res) { });
+            return;
+        }
         var restrictions = this.restrictions['a'];
         var other = this.extra['a'];
         var newGuest = {};
@@ -1280,30 +1271,24 @@ var RsvpComponent = /** @class */ (function () {
         newGuest["added"] = true;
         newGuest["game"] = this.game['a'];
         newGuest["tea"] = this.tea['a'];
-        this.http.delete(this.url + "?rsvp=" + this.guests[0].rsvp, new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: this.headers })).toPromise().then(function (res) {
-            if (_this.plusOneRadio == "true") {
-                _this.http.post(_this.url, newGuest, new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: _this.headers })).toPromise().then(function (res) {
-                    _this.http.delete(_this.dieturl + "?guest=" + res.json().guestid).toPromise().then(function () {
-                        for (var _i = 0, restrictions_2 = restrictions; _i < restrictions_2.length; _i++) {
-                            var r = restrictions_2[_i];
-                            if (r == 'none') {
-                                break;
-                            }
-                            var dietBody = {};
-                            if (r == 'other') {
-                                dietBody["restriction"] = other;
-                            }
-                            else {
-                                dietBody["restriction"] = r;
-                            }
-                            dietBody["guest_id"] = res.json().guestid;
-                            var dietRequest = _this.http.post(_this.dieturl, dietBody, new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: _this.headers }));
-                            dietRequest.subscribe();
-                        }
-                    });
+        for (var r in restrictions) {
+            if (restrictions[r] == 'other') {
+                restrictions[r] = other;
+                break;
+            }
+        }
+        newGuest["restrictions"] = JSON.stringify(restrictions);
+        if (this.addedId) {
+            var putRequest = this.http.put(this.url + this.addedId + "/", JSON.stringify(newGuest), new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: this.headers }));
+            putRequest.subscribe();
+        }
+        else {
+            if (this.plusOneRadio == "true") {
+                this.http.post(this.url, newGuest, new _angular_http__WEBPACK_IMPORTED_MODULE_2__["RequestOptions"]({ headers: this.headers })).toPromise().then(function (res) {
+                    console.log(res);
                 });
             }
-        });
+        }
     };
     RsvpComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

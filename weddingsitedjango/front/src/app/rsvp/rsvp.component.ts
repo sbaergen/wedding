@@ -18,7 +18,6 @@ export class RsvpComponent implements OnInit {
   found : boolean = false;
   plusone : boolean = false;
   guests = [];
-  restrictions = [];
   plusFirst;
   plusLast;
   code;
@@ -27,11 +26,12 @@ export class RsvpComponent implements OnInit {
   extra = [];
   game = [];
   tea = [];
-  host = 'http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com'
-  // host = 'http://localhost:8000'
+  restrictions = [];
+  addedId;
+  // host = 'http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com'
+  host = 'http://localhost:8000'
   url : string=this.host + '/wedding/guestsapi/';
-  dieturl : string=this.host + '/wedding/dietaryapi/';
-  contributionUrl = this.host + '/wedding/contributionapi'
+  contributionUrl = this.host + '/wedding/contributionapi/';
   headers = new Headers({
     'Content-Type': 'application/json',
     'X-CSRFToken': this.getCookie('csrftoken')
@@ -61,23 +61,21 @@ export class RsvpComponent implements OnInit {
     }
   }
 
-  getDiet(guestid, index): Object {
-    return this.http.get(this.dieturl + "?guest=" + guestid).toPromise().then((res)=>{
-        this.restrictions[index] = [];
-        for (let r of res.json()) {
-            if (!['gluten', 'dairy', 'vegetarian', 'vegan'].includes(r.restriction)){
-                this.restrictions[index].push("other");
-                this.extra[index] = r.restriction;
-            } else {
-                this.restrictions[index].push(r.restriction)
-            }
+  getDiet(restrictions, index): void {
+    this.restrictions[index] = [];
+    for (let r of JSON.parse(restrictions)) {
+        if (!['gluten', 'dairy', 'vegetarian', 'vegan'].includes(r)){
+            this.restrictions[index].push("other");
+            this.extra[index] = r;
+        } else {
+            this.restrictions[index].push(r)
         }
-        if (this.restrictions[index].length == 0){
-            this.restrictions[index].push('none');
-        }
-
-    });
+    }
+    if (this.restrictions[index].length == 0){
+        this.restrictions[index].push('none');
+    }
   }
+
   getNames(first, last): void {
     var rsvp : number = 0;
     var url1 : string = this.url + "?name=" + first + " " + last;
@@ -101,10 +99,11 @@ export class RsvpComponent implements OnInit {
                     this.plusone = true;
                 }
                 if (this.guests[g].added){
+                    this.addedId = this.guests[g].guestid;
                     this.plusOneRadio = "true";
                     this.plusFirst = this.guests[g].name.split(" ")[0];
                     this.plusLast = this.guests[g].name.slice(this.plusFirst.length+1);
-                    this.getDiet(this.guests[g].guestid, 'a');
+                    this.getDiet(this.guests[g].restrictions, 'a');
                     this.tea['a'] = this.guests[g].tea;
                     this.game['a'] = this.guests[g].game;
 
@@ -113,7 +112,7 @@ export class RsvpComponent implements OnInit {
                         this.plusOneRadio = "";
                     }
                     this.radio[g] = this.guests[g].response + "";
-                    this.getDiet(this.guests[g].guestid, g);
+                    this.getDiet(this.guests[g].restrictions, g);
                     this.tea[g] = this.guests[g].tea;
                     this.game[g] = this.guests[g].game;
                 }
@@ -124,7 +123,7 @@ export class RsvpComponent implements OnInit {
 
   deselect(values, i): void {
     if(values[0] == "none"){
-        this.restrictions[i] = ["none"]
+      this.restrictions[i] = ["none"]
     }
   }
 
@@ -214,7 +213,7 @@ export class RsvpComponent implements OnInit {
           this.http.post(this.contributionUrl + "email/", JSON.stringify(email),new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
           });
         }
-        // this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/home');
     });
   }
 
@@ -230,24 +229,16 @@ export class RsvpComponent implements OnInit {
     if (rsvp == "false"){
         restrictions = {};
     }
-    this.http.delete(this.dieturl + "?guest=" + id, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
-        for (let r of restrictions){
-            if (r == 'none'){
-                break;
-            }
-            var dietBody = {}
-            if (r == 'other'){
-                dietBody["restriction"] = other;
-            } else {
-                dietBody["restriction"] = r;
-            }
-            dietBody["guest_id"] = id
-            var dietRequest = this.http.post(this.dieturl, dietBody, new RequestOptions({headers:this.headers}));
-            dietRequest.subscribe();
+    for (let r in restrictions){
+        if (restrictions[r] == 'none'){
+            break;
         }
-    });
+        if (restrictions[r] == 'other'){
+            restrictions[r] = other;
+            break;
+        }
+    }
 
-    // var headers = new Headers();
     if (rsvp == "true"){
         guest.response = true;
     } else if (rsvp == "false") {
@@ -255,11 +246,17 @@ export class RsvpComponent implements OnInit {
     }
     guest.tea = this.tea[i];
     guest.game = this.game[i];
+    guest.restrictions = JSON.stringify(restrictions);
     var putRequest = this.http.put(this.url + id + "/", JSON.stringify(guest), new RequestOptions({headers: this.headers}));
     putRequest.subscribe();
   }
 
   addPlusOne(){
+    console.log(this.plusOneRadio)
+    if (this.plusOneRadio == "false"){
+      this.http.delete(this.url + "?rsvp=" + this.guests[0].rsvp, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{});
+      return;
+    }
     var restrictions = this.restrictions['a'];
     var other = this.extra['a'];
     var newGuest = {}
@@ -270,28 +267,22 @@ export class RsvpComponent implements OnInit {
     newGuest["added"] = true;
     newGuest["game"] = this.game['a'];
     newGuest["tea"] = this.tea['a'];
-    this.http.delete(this.url + "?rsvp=" + this.guests[0].rsvp, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
-        if (this.plusOneRadio == "true"){
-            this.http.post(this.url, newGuest, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
-                this.http.delete(this.dieturl + "?guest=" + res.json().guestid, new RequestOptions({headers: this.headers})).toPromise().then(()=>{
-                    for (let r of restrictions){
-                        if (r == 'none'){
-                            break;
-                        }
-                        var dietBody = {}
-                        if (r == 'other'){
-                            dietBody["restriction"] = other;
-                        } else {
-                            dietBody["restriction"] = r;
-                        }
-                        dietBody["guest_id"] = res.json().guestid
-                        var dietRequest = this.http.post(this.dieturl, dietBody, new RequestOptions({headers:this.headers}));
-                        dietRequest.subscribe();
-                    }
-                });
-            });
-        }
-    });
+    for (let r in restrictions){
+      if (restrictions[r] == 'other'){
+          restrictions[r] = other;
+          break;
+      }
+    }
+    newGuest["restrictions"] = JSON.stringify(restrictions);
+    if (this.addedId) {
+      var putRequest = this.http.put(this.url + this.addedId + "/", JSON.stringify(newGuest), new RequestOptions({headers: this.headers}));
+      putRequest.subscribe();
+    }
+    else {
+      if (this.plusOneRadio == "true"){
+        this.http.post(this.url, newGuest, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{});
+      }
+    }
   }
 }
 

@@ -9,3 +9,8 @@ p {
     font-size: 20px;
     font-family: 'Slabo 27px', serif;
 }
+
+figure {
+    float: right;
+    max-width: 50%;
+}
