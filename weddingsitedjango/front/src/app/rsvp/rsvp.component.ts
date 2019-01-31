@@ -28,8 +28,8 @@ export class RsvpComponent implements OnInit {
   tea = [];
   restrictions = [];
   addedId;
-  // host = 'http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com'
-  host = 'http://localhost:8000'
+  host = 'http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com'
+  // host = 'http://localhost:8000'
   url : string=this.host + '/wedding/guestsapi/';
   contributionUrl = this.host + '/wedding/contributionapi/';
   headers = new Headers({

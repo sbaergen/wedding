@@ -33,14 +33,12 @@
                 <button mat-fab (click)="checkCode(codeInput)" color="primary" [disabled]="!codeInput.value">Submit</button>
             </div>
                 <span *ngIf="edit && !enterCode">
-                    <button class="blueButton" mat-raised-button float="right" (click)="submit()">Save Changes</button>
+                    <button class="blueButton" `mat-raised-button float="right" (click)="submit()">Save Changes</button>
                 </span>
         </form>
         <br>
-        <!-- <mat-grid-list cols="2" rowHeight="fit" gutterSize="10px"> -->
             <div class="flex-container">
             <div *ngFor="let item of items; let i = index">
-                <!-- <mat-grid-tile role="listitem"> -->
                     <mat-card class="card_format">
                         <mat-card-header>
                             <mat-card-title><strong>{{item.name}}</strong></mat-card-title>

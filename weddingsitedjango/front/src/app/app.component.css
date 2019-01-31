@@ -1,1 +1,18 @@
+.bannerContainer {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
 
+.bannerImage {
+    object-fit: cover;
+    object-position: bottom;
+    height: 100%;
+    width: 100%;
+}
+
+.navbar-brand {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
