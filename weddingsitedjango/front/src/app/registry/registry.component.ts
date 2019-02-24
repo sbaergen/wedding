@@ -21,6 +21,18 @@ export class RegistryComponent implements OnInit {
   edit = false;
   enterCode = false;
   items = [];
+  kitchen = [];
+  numKitchen = 0;
+  furniture = [];
+  numFurniture = 0;
+  games = [];
+  numGames = 0;
+  house = [];
+  numHouse = 0;
+  travel = [];
+  numTravel = 0;
+  other = [];
+  numOther = 0;
   oldAmounts = [];
   contribute = [];
   money = [];
@@ -30,8 +42,10 @@ export class RegistryComponent implements OnInit {
   editEmail = "";
   editMessage = "";
   code = "";
-  registryUrl = '/wedding/registryapi/'
-  contributionUrl = '/wedding/contributionapi/'
+  host ='http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com'
+  // host = 'http://localhost:8000'
+  registryUrl = this.host + '/wedding/registryapi/'
+  contributionUrl = this.host + '/wedding/contributionapi/'
   headers = new Headers({
     'Content-Type': 'application/json',
     'X-CSRFToken': this.getCookie('csrftoken')
@@ -41,6 +55,30 @@ export class RegistryComponent implements OnInit {
   ngOnInit() {
     this.http.get(this.registryUrl).toPromise().then((res)=>{
       this.items=res.json();
+      this.kitchen = this.items.filter(r => r.category === "A").sort((a,b) => {return ('' + a.name).localeCompare('' + b.name)});
+      this.furniture = this.items.filter(r => r.category === "B").sort((a,b) => {return ('' + a.name).localeCompare('' + b.name)});
+      this.house = this.items.filter(r => r.category === "C").sort((a,b) => {return ('' + a.name).localeCompare('' + b.name)});
+      this.games = this.items.filter(r => r.category === "D").sort((a,b) => {return ('' + a.name).localeCompare('' + b.name)});
+      this.travel = this.items.filter(r => r.category === "E").sort((a,b) => {return ('' + a.name).localeCompare('' + b.name)});
+      this.other = this.items.filter(r => r.category === "Z").sort((a,b) => {return ('' + a.name).localeCompare('' + b.name)});
+      this.items = []
+      this.numKitchen = this.kitchen.length;
+      this.numFurniture = this.furniture.length;
+      this.numHouse = this.house.length;
+      this.numGames = this.games.length;
+      this.numTravel = this.travel.length;
+      this.numOther = this.other.length;
+      console.log(this.numKitchen)
+      this.items = this.items.concat(this.kitchen);
+      this.items = this.items.concat(this.furniture);
+      this.items = this.items.concat(this.house);
+      this.items = this.items.concat(this.games);
+      this.items = this.items.concat(this.travel);
+      this.items = this.items.concat(this.other);
+      console.log(this.kitchen)
+      console.log(this.furniture)
+      console.log("AFTER")
+      console.log(this.items)
       for (let i in this.items) {
         this.contribute[i] = false;
         if (this.items[i].raised){
@@ -52,6 +90,7 @@ export class RegistryComponent implements OnInit {
     });
     this.config.duration = 1000;
     this.config.panelClass = ['snackClass'];
+    console.log(this.items)
   }
 
   getCookie(name) {
@@ -139,7 +178,7 @@ export class RegistryComponent implements OnInit {
     }
     dialogRef.afterClosed().subscribe(result => {
         if (result != "Cancel"){
-          this.http.delete(this.contributionUrl + "?code=" + this.code).toPromise().then((res)=>{
+          this.http.delete(this.contributionUrl + "?code=" + this.code, new RequestOptions({headers: this.headers})).toPromise().then((res)=>{
             for (let c in this.contribute){
               if (this.contribute[c] && this.bought[c] > 0){
                 var newContribution = {};
@@ -173,10 +212,10 @@ export class RegistryComponent implements OnInit {
               body = body + "<p>We realize that supporting us financially is not always possible. Please know that we still value your continued support in ways of prayer and love as we start this new chapter in our lives!</p><hr><p><strong>Sean and Tiffanie</strong></p>"
             }
             else if (!this.edit){
-              body = body + "<p>Thank you for your contribution to our Registry! What you have committed to can be found below. At the wedding there will be an opportunity to leave cash or cheque (payable to Sean Baergen) in order to pay for your committments. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to modify your commitment, just return to <a href=http://seanandtiffanie2019.ca/registry>the registry</a> and enter in your code: <strong>" + this.code + "</strong>";
+              body = body + "<p>Thank you for your contribution to our Registry! As a reminder, we do not receive any money through the website so please bring your contribution <strong>to the wedding</strong>. There will be an opportunity to leave cash or a cheque (payable to Sean Baergen) at the wedding. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to modify your commitment, just return to <a href=http://seanandtiffanie2019.ca/registry>the registry</a> and enter in your code: <strong>" + this.code + "</strong>";
             }
             else {
-              body = body + "<p>Your contribution has been modified. What you have committed to can be found below. At the wedding there will be an opportunity to leave cash or cheque (payable to Sean Baergen) in order to pay for your committments. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to further modify your commitment, just return to <a href=http://http://seanandtiffanie2019.ca/registry>the registry</a> and enter in your code: <strong>" + this.code + "</strong>";
+              body = body + "<p>Your contribution has been modified. As a reminder, we do not receive any money through the website so please bring your contribution <strong>to the wedding</strong>. There will be an opportunity to leave cash or a cheque (payable to Sean Baergen) at the wedding. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to further modify your commitment, just return to <a href=http://http://seanandtiffanie2019.ca/registry>the registry</a> and enter in your code: <strong>" + this.code + "</strong>";
             }
             if (this.getTotal() != 0){
               body = body + "<h3>Items Commited To</h3><hr>";

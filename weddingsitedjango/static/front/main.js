@@ -23,9 +23,9 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
-/***/ "./src/app/accomodations/accomodations.component.css":
+/***/ "./src/app/accommodations/accommodations.component.css":
 /*!***********************************************************!*\
-  !*** ./src/app/accomodations/accomodations.component.css ***!
+  !*** ./src/app/accommodations/accommodations.component.css ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -34,27 +34,27 @@ module.exports = ".html {\n    color: white;\n}\n"
 
 /***/ }),
 
-/***/ "./src/app/accomodations/accomodations.component.html":
+/***/ "./src/app/accommodations/accommodations.component.html":
 /*!************************************************************!*\
-  !*** ./src/app/accomodations/accomodations.component.html ***!
+  !*** ./src/app/accommodations/accommodations.component.html ***!
   \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img src=\"l\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a href=\"#\">Home</a></li>\n                <li class=\"active\"><a href=\"accomodations\">Accomodations</a></li>\n                <li><a href=\"event\">Event Details</a></li>\n                <li><a href=\"registry\">Registry</a></li>\n                <li><a href=\"photos\">Photos</a></li>\n                <li><a href=\"rsvp\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<router-outlet></router-outlet>\n\n"
+module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img src=\"l\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a href=\"#\">Home</a></li>\n                <li class=\"active\"><a href=\"accommodations\">accommodations</a></li>\n                <li><a href=\"event\">Event Details</a></li>\n                <li><a href=\"registry\">Registry</a></li>\n                <li><a href=\"photos\">Photos</a></li>\n                <li><a href=\"rsvp\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<router-outlet></router-outlet>\n\n"
 
 /***/ }),
 
-/***/ "./src/app/accomodations/accomodations.component.ts":
+/***/ "./src/app/accommodations/accommodations.component.ts":
 /*!**********************************************************!*\
-  !*** ./src/app/accomodations/accomodations.component.ts ***!
+  !*** ./src/app/accommodations/accommodations.component.ts ***!
   \**********************************************************/
-/*! exports provided: AccomodationsComponent */
+/*! exports provided: accommodationsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccomodationsComponent", function() { return AccomodationsComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accommodationsComponent", function() { return accommodationsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -66,20 +66,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var AccomodationsComponent = /** @class */ (function () {
-    function AccomodationsComponent() {
+var accommodationsComponent = /** @class */ (function () {
+    function accommodationsComponent() {
     }
-    AccomodationsComponent.prototype.ngOnInit = function () {
+    accommodationsComponent.prototype.ngOnInit = function () {
     };
-    AccomodationsComponent = __decorate([
+    accommodationsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-accomodations',
-            template: __webpack_require__(/*! ./accomodations.component.html */ "./src/app/accomodations/accomodations.component.html"),
-            styles: [__webpack_require__(/*! ./accomodations.component.css */ "./src/app/accomodations/accomodations.component.css")]
+            selector: 'app-accommodations',
+            template: __webpack_require__(/*! ./accommodations.component.html */ "./src/app/accommodations/accommodations.component.html"),
+            styles: [__webpack_require__(/*! ./accommodations.component.css */ "./src/app/accommodations/accommodations.component.css")]
         }),
         __metadata("design:paramtypes", [])
-    ], AccomodationsComponent);
-    return AccomodationsComponent;
+    ], accommodationsComponent);
+    return accommodationsComponent;
 }());
 
 
@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _accomodations_accomodations_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./accomodations/accomodations.component */ "./src/app/accomodations/accomodations.component.ts");
+/* harmony import */ var _accommodations_accommodations_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./accommodations/accommodations.component */ "./src/app/accommodations/accommodations.component.ts");
 /* harmony import */ var _event_event_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event/event.component */ "./src/app/event/event.component.ts");
 /* harmony import */ var _photos_photos_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./photos/photos.component */ "./src/app/photos/photos.component.ts");
 /* harmony import */ var _registry_registry_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./registry/registry.component */ "./src/app/registry/registry.component.ts");
@@ -120,7 +120,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 var routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'accomodations', component: _accomodations_accomodations_component__WEBPACK_IMPORTED_MODULE_2__["AccomodationsComponent"] },
+    { path: 'accommodations', component: _accommodations_accommodations_component__WEBPACK_IMPORTED_MODULE_2__["accommodationsComponent"] },
     { path: 'event', component: _event_event_component__WEBPACK_IMPORTED_MODULE_3__["EventComponent"] },
     { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"] },
     { path: 'photos', component: _photos_photos_component__WEBPACK_IMPORTED_MODULE_4__["PhotosComponent"] },
@@ -234,7 +234,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _accomodations_accomodations_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./accomodations/accomodations.component */ "./src/app/accomodations/accomodations.component.ts");
+/* harmony import */ var _accommodations_accommodations_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./accommodations/accommodations.component */ "./src/app/accommodations/accommodations.component.ts");
 /* harmony import */ var _event_event_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./event/event.component */ "./src/app/event/event.component.ts");
 /* harmony import */ var _registry_registry_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./registry/registry.component */ "./src/app/registry/registry.component.ts");
 /* harmony import */ var _photos_photos_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./photos/photos.component */ "./src/app/photos/photos.component.ts");
@@ -266,7 +266,7 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-                _accomodations_accomodations_component__WEBPACK_IMPORTED_MODULE_5__["AccomodationsComponent"],
+                _accommodations_accommodations_component__WEBPACK_IMPORTED_MODULE_5__["accommodationsComponent"],
                 _event_event_component__WEBPACK_IMPORTED_MODULE_6__["EventComponent"],
                 _registry_registry_component__WEBPACK_IMPORTED_MODULE_7__["RegistryComponent"],
                 _photos_photos_component__WEBPACK_IMPORTED_MODULE_8__["PhotosComponent"],
@@ -308,7 +308,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img src=\"l\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a href=\"#\">Home</a></li>\n                <li><a href=\"accomodations\">Accomodations</a></li>\n                <li class=\"active\"><a href=\"event\">Event Details</a></li>\n                <li><a href=\"registry\">Registry</a></li>\n                <li><a href=\"photos\">Photos</a></li>\n                <li><a href=\"rsvp\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<router-outlet></router-outlet>\n\n"
+module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img src=\"l\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a href=\"#\">Home</a></li>\n                <li><a href=\"accommodations\">accommodations</a></li>\n                <li class=\"active\"><a href=\"event\">Event Details</a></li>\n                <li><a href=\"registry\">Registry</a></li>\n                <li><a href=\"photos\">Photos</a></li>\n                <li><a href=\"rsvp\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<router-outlet></router-outlet>\n\n"
 
 /***/ }),
 
@@ -371,7 +371,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img src=\"l\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li class=\"active\"><a href=\"#\">Home</a></li>\n                <li><a href=\"accomodations\">Accomodations</a></li>\n                <li><a href=\"event\">Event Details</a></li>\n                <li><a href=\"registry\">Registry</a></li>\n                <li><a href=\"photos\">Photos</a></li>\n                <li><a href=\"rsvp\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<router-outlet></router-outlet>\n\n<div style=\"text-align:center\">\n        <button (click)=\"getGuests()\">Get /guests/all </button>\n</div>\n<div>\n    <h2>Wedding Details</h2>\n    June 15, 2018\n    <br>\n    3:00pm\n    <br>\n    First Mennonite Church\n    <hr>\n    <a routerLink=\"/rsvp\">RSVP</a>\n    <br>\n    <a routerLink=\"/event\">Full Event Details</a>\n    <br>\n    <a routerLink=\"/accomodations\">Accomodations</a>\n    <br>\n    <a routerLink=\"/registry\">Registry</a>\n    <br>\n    <a routerLink=\"/photos\">Photos</a>\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img src=\"l\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li class=\"active\"><a href=\"#\">Home</a></li>\n                <li><a href=\"accommodations\">accommodations</a></li>\n                <li><a href=\"event\">Event Details</a></li>\n                <li><a href=\"registry\">Registry</a></li>\n                <li><a href=\"photos\">Photos</a></li>\n                <li><a href=\"rsvp\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<router-outlet></router-outlet>\n\n<div style=\"text-align:center\">\n        <button (click)=\"getGuests()\">Get /guests/all </button>\n</div>\n<div>\n    <h2>Wedding Details</h2>\n    June 15, 2018\n    <br>\n    3:00pm\n    <br>\n    First Mennonite Church\n    <hr>\n    <a routerLink=\"/rsvp\">RSVP</a>\n    <br>\n    <a routerLink=\"/event\">Full Event Details</a>\n    <br>\n    <a routerLink=\"/accommodations\">accommodations</a>\n    <br>\n    <a routerLink=\"/registry\">Registry</a>\n    <br>\n    <a routerLink=\"/photos\">Photos</a>\n</div>\n"
 
 /***/ }),
 
@@ -448,7 +448,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img src=\"l\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a href=\"#\">Home</a></li>\n                <li><a href=\"accomodations\">Accomodations</a></li>\n                <li><a href=\"event\">Event Details</a></li>\n                <li><a href=\"registry\">Registry</a></li>\n                <li class=\"active\"><a href=\"photos\">Photos</a></li>\n                <li><a href=\"rsvp\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img src=\"l\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a href=\"#\">Home</a></li>\n                <li><a href=\"accommodations\">accommodations</a></li>\n                <li><a href=\"event\">Event Details</a></li>\n                <li><a href=\"registry\">Registry</a></li>\n                <li class=\"active\"><a href=\"photos\">Photos</a></li>\n                <li><a href=\"rsvp\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n"
 
 /***/ }),
 
@@ -511,7 +511,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img src=\"./Weddinglogo.jpg\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a href=\"#\">Home</a></li>\n                <li><a href=\"accomodations\">Accomodations</a></li>\n                <li><a href=\"event\">Event Details</a></li>\n                <li class=\"active\"><a href=\"registry\">Registry</a></li>\n                <li><a href=\"photos\">Photos</a></li>\n                <li><a href=\"rsvp\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img src=\"./Weddinglogo.jpg\"></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a href=\"#\">Home</a></li>\n                <li><a href=\"accommodations\">accommodations</a></li>\n                <li><a href=\"event\">Event Details</a></li>\n                <li class=\"active\"><a href=\"registry\">Registry</a></li>\n                <li><a href=\"photos\">Photos</a></li>\n                <li><a href=\"rsvp\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n"
 
 /***/ }),
 
@@ -574,7 +574,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <title>Sean and Tiffanie's Wedding</title>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n</head>\n<body>\n    <nav class=\"navbar navbar-inverse\">\n        <div class=\"container-fluid\">\n            <div class=\"navbar-header\">\n                <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\">\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                </button>\n                <a class=\"navbar-brand\" href=\"#\"><img src=\"l\"></a>\n            </div>\n            <div class=\"collapse navbar-collapse\" id=\"MyNavbar\">\n                <ul class=\"nav navbar-nav\">\n                    <li><a href=\"#\">Home</a></li>\n                    <li><a href=\"accomodations\">Accomodations</a></li>\n                    <li><a href=\"event\">Event Details</a></li>\n                    <li><a href=\"registry\">Registry</a></li>\n                    <li><a href=\"photos\">Photos</a></li>\n                    <li class=\"active\"><a href=\"rsvp\">RSVP</a></li>\n                </ul>\n            </div>\n        </div>\n    </nav>\n</body>\n\nrsvp\n"
+module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <title>Sean and Tiffanie's Wedding</title>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n</head>\n<body>\n    <nav class=\"navbar navbar-inverse\">\n        <div class=\"container-fluid\">\n            <div class=\"navbar-header\">\n                <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\">\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                </button>\n                <a class=\"navbar-brand\" href=\"#\"><img src=\"l\"></a>\n            </div>\n            <div class=\"collapse navbar-collapse\" id=\"MyNavbar\">\n                <ul class=\"nav navbar-nav\">\n                    <li><a href=\"#\">Home</a></li>\n                    <li><a href=\"accommodations\">accommodations</a></li>\n                    <li><a href=\"event\">Event Details</a></li>\n                    <li><a href=\"registry\">Registry</a></li>\n                    <li><a href=\"photos\">Photos</a></li>\n                    <li class=\"active\"><a href=\"rsvp\">RSVP</a></li>\n                </ul>\n            </div>\n        </div>\n    </nav>\n</body>\n\nrsvp\n"
 
 /***/ }),
 

@@ -15,10 +15,21 @@ class Guest(models.Model):
         return self.name
 
 class Registry(models.Model):
+    CATEGORY_CHOICES = (
+        ("A", "Kitchen"),
+        ("B", "Furniture"),
+        ("C", "House"),
+        ("D", "Games"),
+        ("E", "Travel"),
+        ("Z", "Other")
+    )
     name = models.CharField(max_length=100)
     picture = models.ImageField(upload_to='registryPictures/', blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=True)
     raised = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    category = models.CharField(max_length=1, choices=CATEGORY_CHOICES, blank=True)
+    def __str__(self):
+        return self.name
 
 class Dietary(models.Model):
     guest_id = models.ForeignKey(Guest, on_delete=models.CASCADE)
@@ -37,4 +48,5 @@ class Contribution(models.Model):
     itemid = models.ForeignKey(Registry, on_delete=models.CASCADE)
     code = models.CharField(max_length=4)
     date = models.DateTimeField(auto_now=True)
-
+    def __str__(self):
+        return self.name + "_" + self.itemid

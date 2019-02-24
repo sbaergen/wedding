@@ -23,38 +23,38 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
-/***/ "./src/app/accomodations/accomodations.component.css":
-/*!***********************************************************!*\
-  !*** ./src/app/accomodations/accomodations.component.css ***!
-  \***********************************************************/
+/***/ "./src/app/accommodations/accommodations.component.css":
+/*!*************************************************************!*\
+  !*** ./src/app/accommodations/accommodations.component.css ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@import url('https://fonts.googleapis.com/css?family=Rouge+Script|Slabo+27px');\n\nhtml {\n    color: white;\n    background-color: #D0E6EE;\n}\n\nh2 {\n    font-family: 'Rouge Script', cursive;\n    font-size: 48px;\n}\n\nfigure {\n    float: right;\n    max-width: 50%;\n}\n\np {\n    font-size: 20px;\n    font-family: 'Slabo 27px', serif;\n}\n"
+module.exports = "@import url('https://fonts.googleapis.com/css?family=Rouge+Script|Slabo+27px');\n\nhtml {\n    color: white;\n    background-color: #D0E6EE;\n}\n\nh2 {\n    font-family: 'Rouge Script', cursive;\n    font-size: 48px;\n}\n\nfigure {\n    float: right;\n    max-width: 50%;\n    margin: 10px;\n}\n\np {\n    font-size: 20px;\n    font-family: 'Slabo 27px', serif;\n}\n"
 
 /***/ }),
 
-/***/ "./src/app/accomodations/accomodations.component.html":
+/***/ "./src/app/accommodations/accommodations.component.html":
+/*!**************************************************************!*\
+  !*** ./src/app/accommodations/accommodations.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<figure>\n<iframe width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?q=place_id:ChIJGyT-PdweoFMR-pJ0q0j0oVo&key=AIzaSyCl27vT153QwUXeuFuopKm5M5TLQUlKRNU\" allowfullscreen></iframe></figure>\n<h2>Accommodations</h2>\n<p> If you require accommodations in Edmonton, we have reserved a block of rooms from June 14-16 near the venue for your convienence at:</p>\n<br>\n<p><strong>Holiday Inn Express & Suites Edmonton South</strong></p>\n<p>2440 Calgary Trail</p>\n<p>Edmonton, AB, T6J 5J6</p>\n<p>1-780-440-5000</p>\n<p><a href=\"http://bit.ly/HIExpressYEG\">http://bit.ly/HIExpressYEG</a></p>\n<p><strong>Please book by May 14 with the group name \"Sean and Tiffanie Wedding\"</strong></p>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/accommodations/accommodations.component.ts":
 /*!************************************************************!*\
-  !*** ./src/app/accomodations/accomodations.component.html ***!
+  !*** ./src/app/accommodations/accommodations.component.ts ***!
   \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<figure>\n<iframe width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/place?q=place_id:ChIJGyT-PdweoFMR-pJ0q0j0oVo&key=AIzaSyCl27vT153QwUXeuFuopKm5M5TLQUlKRNU\" allowfullscreen></iframe></figure>\n<h2>Accomodations</h2>\n<p> If you require accomodations in Edmonton, we have reserved a block of rooms from June 14-16 near the venue for your convienence at:</p>\n<br>\n<p><strong>Holiday Inn Express & Suites Edmonton South</strong></p>\n<p>2440 Calgary Trail</p>\n<p>Edmonton, AB, T6J 5J6</p>\n<p>1-780-440-5000</p>\n<p><a href=\"http://bit.ly/HIExpressYEG\">http://bit.ly/HIExpressYEG</a></p>\n<p><strong>Please book by May 14 with the group name \"Sean and Tiffanie Wedding\"</strong></p>\n\n"
-
-/***/ }),
-
-/***/ "./src/app/accomodations/accomodations.component.ts":
-/*!**********************************************************!*\
-  !*** ./src/app/accomodations/accomodations.component.ts ***!
-  \**********************************************************/
-/*! exports provided: AccomodationsComponent */
+/*! exports provided: accommodationsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccomodationsComponent", function() { return AccomodationsComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accommodationsComponent", function() { return accommodationsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -66,20 +66,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var AccomodationsComponent = /** @class */ (function () {
-    function AccomodationsComponent() {
+var accommodationsComponent = /** @class */ (function () {
+    function accommodationsComponent() {
     }
-    AccomodationsComponent.prototype.ngOnInit = function () {
+    accommodationsComponent.prototype.ngOnInit = function () {
     };
-    AccomodationsComponent = __decorate([
+    accommodationsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-accomodations',
-            template: __webpack_require__(/*! ./accomodations.component.html */ "./src/app/accomodations/accomodations.component.html"),
-            styles: [__webpack_require__(/*! ./accomodations.component.css */ "./src/app/accomodations/accomodations.component.css")]
+            selector: 'app-accommodations',
+            template: __webpack_require__(/*! ./accommodations.component.html */ "./src/app/accommodations/accommodations.component.html"),
+            styles: [__webpack_require__(/*! ./accommodations.component.css */ "./src/app/accommodations/accommodations.component.css")]
         }),
         __metadata("design:paramtypes", [])
-    ], AccomodationsComponent);
-    return AccomodationsComponent;
+    ], accommodationsComponent);
+    return accommodationsComponent;
 }());
 
 
@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _accomodations_accomodations_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./accomodations/accomodations.component */ "./src/app/accomodations/accomodations.component.ts");
+/* harmony import */ var _accommodations_accommodations_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./accommodations/accommodations.component */ "./src/app/accommodations/accommodations.component.ts");
 /* harmony import */ var _event_event_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event/event.component */ "./src/app/event/event.component.ts");
 /* harmony import */ var _photos_photos_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./photos/photos.component */ "./src/app/photos/photos.component.ts");
 /* harmony import */ var _registry_registry_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./registry/registry.component */ "./src/app/registry/registry.component.ts");
@@ -120,7 +120,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'accomodations', component: _accomodations_accomodations_component__WEBPACK_IMPORTED_MODULE_2__["AccomodationsComponent"] },
+    { path: 'accommodations', component: _accommodations_accommodations_component__WEBPACK_IMPORTED_MODULE_2__["accommodationsComponent"] },
     { path: 'event', component: _event_event_component__WEBPACK_IMPORTED_MODULE_3__["EventComponent"] },
     { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"] },
     { path: 'photos', component: _photos_photos_component__WEBPACK_IMPORTED_MODULE_4__["PhotosComponent"] },
@@ -161,7 +161,7 @@ module.exports = ".bannerContainer {\n    height: 200px;\n    width: 100%;\n    
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img height=\"30\" src=\"./static/wedding/Weddinglogo.png\"/></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a [routerLink]=\"['/']\">Home</a></li>\n                <li><a [routerLink]=\"['/accomodations']\">Accomodations</a></li>\n                <li><a [routerLink]=\"['/event']\">Event Details</a></li>\n                <li><a [routerLink]=\"['/registry']\">Registry</a></li>\n                <li><a [routerLink]=\"['/photos']\">Photos</a></li>\n                <li><a [routerLink]=\"['/rsvp']\">RSVP</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<div class=\"bannerContainer\">\n    <img class=\"bannerImage\" src=\"./static/wedding/banner.jpg\"/>\n</div>\n<router-outlet></router-outlet>\n"
+module.exports = "<nav class=\"navbar navbar-inverse\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#MyNavbar\" (click)=\"isCollapsed = !isCollapsed\">\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\"><img height=\"30\" src=\"./static/wedding/Weddinglogo.png\"/></a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"MyNavbar\" [ngbCollapse]=\"isCollapsed\">\n            <ul class=\"nav navbar-nav\">\n                <li><a [routerLink]=\"['/']\">Home</a></li>\n                <li><a [routerLink]=\"['/event']\">Event Details</a></li>\n                <li><a [routerLink]=\"['/rsvp']\">RSVP</a></li>\n                <li><a [routerLink]=\"['/accommodations']\">Accommodations</a></li>\n                <li><a [routerLink]=\"['/registry']\">Registry</a></li>\n                <li><a [routerLink]=\"['/photos']\">Photos</a></li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<div class=\"bannerContainer\">\n    <img class=\"bannerImage\" src=\"./static/wedding/banner.jpg\"/>\n</div>\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -236,7 +236,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _accomodations_accomodations_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./accomodations/accomodations.component */ "./src/app/accomodations/accomodations.component.ts");
+/* harmony import */ var _accommodations_accommodations_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./accommodations/accommodations.component */ "./src/app/accommodations/accommodations.component.ts");
 /* harmony import */ var _event_event_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./event/event.component */ "./src/app/event/event.component.ts");
 /* harmony import */ var _registry_registry_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./registry/registry.component */ "./src/app/registry/registry.component.ts");
 /* harmony import */ var _photos_photos_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./photos/photos.component */ "./src/app/photos/photos.component.ts");
@@ -281,7 +281,7 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
-                _accomodations_accomodations_component__WEBPACK_IMPORTED_MODULE_7__["AccomodationsComponent"],
+                _accommodations_accommodations_component__WEBPACK_IMPORTED_MODULE_7__["accommodationsComponent"],
                 _event_event_component__WEBPACK_IMPORTED_MODULE_8__["EventComponent"],
                 _registry_registry_component__WEBPACK_IMPORTED_MODULE_9__["RegistryComponent"],
                 _photos_photos_component__WEBPACK_IMPORTED_MODULE_10__["PhotosComponent"],
@@ -342,7 +342,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@import url('https://fonts.googleapis.com/css?family=Rouge+Script|Slabo+27px');\n\nh2 {\n    font-family: 'Rouge Script', cursive;\n    font-size: 48px;\n}\n\np {\n    font-size: 20px;\n    font-family: 'Slabo 27px', serif;\n}\n\nfigure {\n    float: right;\n    max-width: 50%;\n}\n"
+module.exports = "@import url('https://fonts.googleapis.com/css?family=Rouge+Script|Slabo+27px');\n\nh2 {\n    font-family: 'Rouge Script', cursive;\n    font-size: 48px;\n}\n\np {\n    font-size: 20px;\n    font-family: 'Slabo 27px', serif;\n}\n\nfigure {\n    float: right;\n    max-width: 50%;\n    margin: 10px;\n}\n"
 
 /***/ }),
 
@@ -416,7 +416,7 @@ module.exports = ".rounded {\n    border-radius: 50%;\n    width: 300px;\n    he
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n        <div class=\"rounded\">\n            <img class=\"shrink\" src=\"./static/wedding/frontPhoto.jpg\" alt=\"logo\">\n        </div>\n        <h1>Sean & Tiffanie's Wedding</h1>\n        <div class=\"thirty\">\n            <a routerLink=\"/event\">Details</a>\n            <br>\n            <a routerLink=\"/rsvp\">RSVP</a>\n            <br>\n            <a routerLink=\"/accomodations\">Accomodations</a>\n            <br>\n            <a routerLink=\"/registry\">Registry</a>\n            <br>\n            <a routerLink=\"/photos\">Photos</a>\n            <br>\n        </div>\n        <footer>\n            <p>Contact us if you have any questions at <a href=\"mailto:sean.tiffanie@gmail.com\">sean.tiffanie@gmail.com</a></p>\n        </footer>\n\n"
+module.exports = "\n        <div class=\"rounded\">\n            <img class=\"shrink\" src=\"./static/wedding/frontPhoto.jpg\" alt=\"logo\">\n        </div>\n        <h1>Sean & Tiffanie's Wedding</h1>\n        <div class=\"thirty\">\n            <a routerLink=\"/event\">Event Details</a>\n            <br>\n            <a routerLink=\"/rsvp\">RSVP</a>\n            <br>\n            <a routerLink=\"/accommodations\">Accommodations</a>\n            <br>\n            <a routerLink=\"/registry\">Registry</a>\n            <br>\n            <a routerLink=\"/photos\">Photos</a>\n            <br>\n        </div>\n        <footer>\n            <p>Contact us if you have any questions at <a href=\"mailto:sean.tiffanie@gmail.com\">sean.tiffanie@gmail.com</a></p>\n        </footer>\n\n"
 
 /***/ }),
 
@@ -575,7 +575,7 @@ module.exports = "<h2 mat-dialog-title>Confirm Commitments</h2>\n<mat-horizontal
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".card_image {\n    max-width: 140px;\n    height: auto;\n    float: left;\n    margin: 1%;\n}\n\n.card_format {\n    width: 90%;\n    width: 480px;\n    height: auto;\n    min-height: 300px;\n    margin: 10px;\n}\n\n.card_text {\n    display: inline-block;\n}\n\n.sidebar {\n    position: absolute;\n}\n\n.navbar {\n    z-index: 1;\n}\n\nhr {\n    margin: 0;\n}\n\nmat-grid-list {\n    height: 100%;\n}\n\n.flex-container {\n    display: flex;\n    flex-flow: row wrap;\n    justify-content: space-evenly;\n    align-content: space-between;\n}\n\n.CodeEntry {\n    text-align: center;\n}\n\n#codeInput {\n    width: 300px !important;\n}\n\n.jumbotron {\n    text-align: center;\n    padding: 10px 50px 10px 50px;\n}\n\n.jumbotron p {\n    font-size: 17px;\n    font-weight: 400;\n}\n\n.jumbotron h1 {\n    font-size: 40px\n}\n\n.blueButton {\n    background-color: #3f51b5;\n    color: white;\n    border-radius: 20px !important;\n}\n\n.iconButton {\n    color: #3f51b5;\n}\n\nhtml, button, mat-card{\n    font-family: 'Slabo 27px', serif;\n    font-size: 15px;\n}\n\n/*button {\n    font-family: 'Slabo 27px', serif;\n    font-size: 15px;\n}*/\n\n\n"
+module.exports = ".card_image {\n    max-width: 140px;\n    height: auto;\n    float: left;\n    margin: 1%;\n}\n\n.card_format {\n    width: 90%;\n    width: 480px;\n    height: auto;\n    min-height: 300px;\n    margin: 10px;\n}\n\n.card_text {\n    display: inline-block;\n}\n\n.sidebar {\n    position: absolute;\n}\n\n.navbar {\n    z-index: 1;\n}\n\nhr {\n    margin: 0;\n}\n\nmat-grid-list {\n    height: 100%;\n}\n\n.flex-container {\n    display: flex;\n    flex-flow: row wrap;\n    justify-content: space-evenly;\n    align-content: space-between;\n}\n\n.CodeEntry {\n    text-align: center;\n}\n\n#codeInput {\n    width: 300px !important;\n}\n\n.jumbotron {\n    text-align: center;\n    padding: 10px 50px 10px 50px;\n}\n\n.jumbotron p {\n    font-size: 17px;\n    font-weight: 400;\n}\n\n.jumbotron h1 {\n    font-size: 40px\n}\n\n.blueButton {\n    background-color: #3f51b5;\n    color: white;\n    border-radius: 20px !important;\n}\n\n.iconButton {\n    color: #3f51b5;\n}\n\nhtml, button, mat-card{\n    font-family: 'Slabo 27px', serif;\n    font-size: 15px;\n}\n"
 
 /***/ }),
 
@@ -586,7 +586,7 @@ module.exports = ".card_image {\n    max-width: 140px;\n    height: auto;\n    f
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"jumbotron\">\n            <h1>Registry</h1>\n            <p>Our registry is a bit different than other registries. Since we are having the wedding in Edmonton and not living in Edmonton, we want to avoid having to ship a lot of things back home. However, we still wanted to give you the opportunity to choose out a specific gift. Therefore, we have set up this page where you can designate a certain amount of money towards a certain item. We still ask that you only give us money, but we will only use your money towards the item it was meant for. Another benefit of this is that you can feel free to contribute to a portion of an item. Therefore you are completely free to spend however much you are comfortable with without feeling like you need to buy a whole item. After designating your contribution, you will have the opportunity to enter your name, email, and/or a message to go along with your gift. The email will be used to send you a record of what you contributed to and a code you can use to change your gift. These entries are completely optional. If you have any questions, please email us at <a href=\"mailto:sean.tiffanie@gmail.com\">sean.tiffanie@gmail.com</a>.</p>\n        </div>\n<ng-sidebar-container class=\"sidebar\">\n    <ng-sidebar [(opened)]=\"opened\" mode=\"push\">\n        <strong>Contributions</strong>\n        <div *ngFor=\"let b of bought; let i = index\">\n            <div *ngIf=\"bought[i]\">\n                {{items[i].name}}\n                ${{bought[i].toFixed(2)}}\n            </div>\n        </div>\n        <br>\n        <strong>TOTAL</strong>\n        <hr>\n        ${{getTotal()}}\n        <hr>\n        <button class=\"blueButton\" mat-raised-button (click)=\"submit()\">Confirm Commitment</button>\n    </ng-sidebar>\n    <div ng-sidebar-content>\n        <form class=\"CodeEntry\">\n            <div *ngIf=\"!enterCode && !edit\">\n                <button class=\"blueButton\" mat-raised-button (click)=\"triggerCode()\">Change Existing Contribution</button>\n            </div>\n            <div *ngIf=\"enterCode && !edit\">\n                <mat-form-field appearance=\"outline\" id=\"codeInput\">\n                    <input matInput text-align=\"center\" matTooltip=\"Your code can be found in your confirmation email\" matTooltipPosition=\"left\" placeholder=\"Confirmation Code (Not RSVP Code)\" cdkTextareaAutosize #codeInput>\n                    <mat-hint>Email <a href=\"mailto:sean.tiffanie@gmail.com\">sean.tiffanie@gmail.com</a> if you have lost your code</mat-hint>\n                </mat-form-field>\n                <button mat-fab (click)=\"checkCode(codeInput)\" color=\"primary\" [disabled]=\"!codeInput.value\">Submit</button>\n            </div>\n                <span *ngIf=\"edit && !enterCode\">\n                    <button class=\"blueButton\" `mat-raised-button float=\"right\" (click)=\"submit()\">Save Changes</button>\n                </span>\n        </form>\n        <br>\n            <div class=\"flex-container\">\n            <div *ngFor=\"let item of items; let i = index\">\n                    <mat-card class=\"card_format\">\n                        <mat-card-header>\n                            <mat-card-title><strong>{{item.name}}</strong></mat-card-title>\n                        </mat-card-header>\n                        <img mat-card-image class=\"card_image\" max-width=\"100%\" src=\"{{item.picture}}\" alt=\"item.name\">\n                        <mat-card-content class=\"card_text\">\n                            PRICE: ${{item.price}} <br>\n                            Remaining: ${{getRemaining(i)}} <br>\n                            <span *ngIf=\"!contribute[i] && getRemaining(i)!=0\">\n                                <button class=\"blueButton\" mat-raised-button (click)=\"triggerContribute(i)\">Contribute</button>\n                            </span>\n                            <span *ngIf=\"contribute[i]\">\n                                Contribution: <br>$\n                                <mat-form-field>\n                                    <input matInput name=\"{{money[i] + amount}}\" [(ngModel)]=\"money[i]\" type=\"number\" placeholder=\"Amount\" value=\"0\" required #amount=\"ngModel\">\n                                </mat-form-field>\n                                <button class=\"iconButton\" mat-icon-button (click)=\"buy(i, money[i])\" [disabled]=\"!checkValid(i)\"><mat-icon>done</mat-icon></button>\n                                <button class=\"iconButton\" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>\n                            </span>\n                        </mat-card-content>\n                    </mat-card>\n                <!-- </mat-grid-tile> -->\n            </div>\n        </div>\n        <!-- </mat-grid-list> -->\n    </div>\n</ng-sidebar-container>\n\n"
+module.exports = "\n\n<div class=\"jumbotron\">\n    <h1>Registry</h1>\n    <p>Our registry is a bit different than other registries! We’d like to give you the opportunity to support and celebrate our marriage by contributing to our registry. However, since we’re getting married in a different city than the city we live in, we’d like to minimize the amount of physical items we have to move. Please contribute however much you are comfortable with for each item, and feel free to contribute to only a portion of an item’s cost!</p>\n\n    <p>After designating your contribution, you will have the option to enter your name, email, and/or a message to go along with your gift. Your email will be used to send you a record of what you contributed, and a code you can use to change your gift. If you have any questions, please email us at <a href=\"mailto:sean.tiffanie@gmail.com\">sean.tiffanie@gmail.com</a>.</p>\n\n    <p>Note: We are not actually receiving your contribution through this website – please remember to bring your contribution to our wedding!</p>\n</div>\n<ng-sidebar-container class=\"sidebar\">\n    <ng-sidebar [(opened)]=\"opened\" mode=\"push\">\n        <strong>Contributions</strong>\n        <div *ngFor=\"let b of bought; let i = index\">\n            <div *ngIf=\"bought[i]\">\n                {{items[i].name}}\n                ${{bought[i].toFixed(2)}}\n            </div>\n        </div>\n        <br>\n        <strong>TOTAL</strong>\n        <hr>\n        ${{getTotal()}}\n        <hr>\n        <button class=\"blueButton\" mat-raised-button (click)=\"submit()\">Confirm Commitment</button>\n    </ng-sidebar>\n    <div ng-sidebar-content>\n        <form class=\"CodeEntry\">\n            <div *ngIf=\"!enterCode && !edit\">\n                <button class=\"blueButton\" mat-raised-button (click)=\"triggerCode()\">Change Existing Contribution</button>\n            </div>\n            <div *ngIf=\"enterCode && !edit\">\n                <mat-form-field appearance=\"outline\" id=\"codeInput\">\n                    <input matInput text-align=\"center\" matTooltip=\"Your code can be found in your confirmation email\" matTooltipPosition=\"left\" placeholder=\"Confirmation Code (Not RSVP Code)\" cdkTextareaAutosize #codeInput>\n                    <mat-hint>Email <a href=\"mailto:sean.tiffanie@gmail.com\">sean.tiffanie@gmail.com</a> if you have lost your code</mat-hint>\n                </mat-form-field>\n                <button mat-fab (click)=\"checkCode(codeInput)\" color=\"primary\" [disabled]=\"!codeInput.value\">Submit</button>\n            </div>\n            <span *ngIf=\"edit && !enterCode\">\n                <button class=\"blueButton\" `mat-raised-button float=\"right\" (click)=\"submit()\">Save Changes</button>\n            </span>\n        </form>\n        <br>\n        <h2>Kitchen</h2>\n        <div class=\"flex-container\">\n            <ng-container *ngFor=\"let item of items; let i = index\">\n                <span *ngIf=\"item.category == 'A'\">\n                <mat-card class=\"card_format\">\n                    <mat-card-header>\n                        <mat-card-title><strong>{{item.name}}</strong></mat-card-title>\n                    </mat-card-header>\n                    <img mat-card-image class=\"card_image\" max-width=\"100%\" src=\"{{item.picture}}\" alt=\"{{item.name}}\">\n                    <mat-card-content class=\"card_text\">\n                        PRICE: ${{item.price}} <br>\n                        Remaining: ${{getRemaining(i)}} <br>\n                        <span *ngIf=\"!contribute[i] && getRemaining(i)!=0\">\n                            <button class=\"blueButton\" mat-raised-button (click)=\"triggerContribute(i)\">Contribute</button>\n                        </span>\n                        <span *ngIf=\"contribute[i]\">\n                            Contribution: <br>$\n                            <mat-form-field>\n                                <input matInput name=\"{{money[i] + amount}}\" [(ngModel)]=\"money[i]\" type=\"number\" placeholder=\"Amount\" value=\"0\" required #amount=\"ngModel\">\n                            </mat-form-field>\n                            <button class=\"iconButton\" mat-icon-button (click)=\"buy(i, money[i])\" [disabled]=\"!checkValid(i)\"><mat-icon>done</mat-icon></button>\n                            <button class=\"iconButton\" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>\n                        </span>\n                    </mat-card-content>\n                </mat-card>\n            </span>\n            </ng-container>\n        </div>\n        <h2>Furniture</h2>\n        <div class=\"flex-container\">\n            <ng-container *ngFor=\"let item of items; let i = index\">\n                <span *ngIf=\"item.category == 'B'\">\n                    <mat-card class=\"card_format\">\n                        <mat-card-header>\n                            <mat-card-title><strong>{{item.name}}</strong></mat-card-title>\n                        </mat-card-header>\n                        <img mat-card-image class=\"card_image\" max-width=\"100%\" src=\"{{item.picture}}\" alt=\"{{item.name}}\">\n                        <mat-card-content class=\"card_text\">\n                            PRICE: ${{item.price}} <br>\n                            Remaining: ${{getRemaining(i)}} <br>\n                            <span *ngIf=\"!contribute[i] && getRemaining(i)!=0\">\n                                <button class=\"blueButton\" mat-raised-button (click)=\"triggerContribute(i)\">Contribute</button>\n                            </span>\n                            <span *ngIf=\"contribute[i]\">\n                                Contribution: <br>$\n                                <mat-form-field>\n                                    <input matInput name=\"{{money[i] + amount}}\" [(ngModel)]=\"money[i]\" type=\"number\" placeholder=\"Amount\" value=\"0\" required #amount=\"ngModel\">\n                                </mat-form-field>\n                                <button class=\"iconButton\" mat-icon-button (click)=\"buy(i, money[i])\" [disabled]=\"!checkValid(i)\"><mat-icon>done</mat-icon></button>\n                                <button class=\"iconButton\" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>\n                            </span>\n                        </mat-card-content>\n                    </mat-card>\n                </span>\n            </ng-container>\n        </div>\n        <h2>House</h2>\n        <div class=\"flex-container\">\n            <ng-container *ngFor=\"let item of items; let i = index\">\n                <span *ngIf=\"item.category == 'C'\">\n                <mat-card class=\"card_format\">\n                    <mat-card-header>\n                        <mat-card-title><strong>{{item.name}}</strong></mat-card-title>\n                    </mat-card-header>\n                    <img mat-card-image class=\"card_image\" max-width=\"100%\" src=\"{{item.picture}}\" alt=\"{{item.name}}\">\n                    <mat-card-content class=\"card_text\">\n                        PRICE: ${{item.price}} <br>\n                        Remaining: ${{getRemaining(i)}} <br>\n                        <span *ngIf=\"!contribute[i] && getRemaining(i)!=0\">\n                            <button class=\"blueButton\" mat-raised-button (click)=\"triggerContribute(i)\">Contribute</button>\n                        </span>\n                        <span *ngIf=\"contribute[i]\">\n                            Contribution: <br>$\n                            <mat-form-field>\n                                <input matInput name=\"{{money[i] + amount}}\" [(ngModel)]=\"money[i]\" type=\"number\" placeholder=\"Amount\" value=\"0\" required #amount=\"ngModel\">\n                            </mat-form-field>\n                            <button class=\"iconButton\" mat-icon-button (click)=\"buy(i, money[i])\" [disabled]=\"!checkValid(i)\"><mat-icon>done</mat-icon></button>\n                            <button class=\"iconButton\" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>\n                        </span>\n                    </mat-card-content>\n                </mat-card>\n            </span>\n            </ng-container>\n        </div>\n        <h2>Games</h2>\n        <div class=\"flex-container\">\n            <ng-container *ngFor=\"let item of items; let i = index\">\n                <span *ngIf=\"item.category == 'D'\">\n                <mat-card class=\"card_format\">\n                    <mat-card-header>\n                        <mat-card-title><strong>{{item.name}}</strong></mat-card-title>\n                    </mat-card-header>\n                    <img mat-card-image class=\"card_image\" max-width=\"100%\" src=\"{{item.picture}}\" alt=\"{{item.name}}\">\n                    <mat-card-content class=\"card_text\">\n                        PRICE: ${{item.price}} <br>\n                        Remaining: ${{getRemaining(i)}} <br>\n                        <span *ngIf=\"!contribute[i] && getRemaining(i)!=0\">\n                            <button class=\"blueButton\" mat-raised-button (click)=\"triggerContribute(i)\">Contribute</button>\n                        </span>\n                        <span *ngIf=\"contribute[i]\">\n                            Contribution: <br>$\n                            <mat-form-field>\n                                <input matInput name=\"{{money[i] + amount}}\" [(ngModel)]=\"money[i]\" type=\"number\" placeholder=\"Amount\" value=\"0\" required #amount=\"ngModel\">\n                            </mat-form-field>\n                            <button class=\"iconButton\" mat-icon-button (click)=\"buy(i, money[i])\" [disabled]=\"!checkValid(i)\"><mat-icon>done</mat-icon></button>\n                            <button class=\"iconButton\" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>\n                        </span>\n                    </mat-card-content>\n                </mat-card>\n            </span>\n            </ng-container>\n        </div>\n        <h2>Travel</h2>\n        <div class=\"flex-container\">\n            <ng-container *ngFor=\"let item of items; let i = index\">\n                <span *ngIf=\"item.category == 'E'\">\n                <mat-card class=\"card_format\">\n                    <mat-card-header>\n                        <mat-card-title><strong>{{item.name}}</strong></mat-card-title>\n                    </mat-card-header>\n                    <img mat-card-image class=\"card_image\" max-width=\"100%\" src=\"{{item.picture}}\" alt=\"{{item.name}}\">\n                    <mat-card-content class=\"card_text\">\n                        PRICE: ${{item.price}} <br>\n                        Remaining: ${{getRemaining(i)}} <br>\n                        <span *ngIf=\"!contribute[i] && getRemaining(i)!=0\">\n                            <button class=\"blueButton\" mat-raised-button (click)=\"triggerContribute(i)\">Contribute</button>\n                        </span>\n                        <span *ngIf=\"contribute[i]\">\n                            Contribution: <br>$\n                            <mat-form-field>\n                                <input matInput name=\"{{money[i] + amount}}\" [(ngModel)]=\"money[i]\" type=\"number\" placeholder=\"Amount\" value=\"0\" required #amount=\"ngModel\">\n                            </mat-form-field>\n                            <button class=\"iconButton\" mat-icon-button (click)=\"buy(i, money[i])\" [disabled]=\"!checkValid(i)\"><mat-icon>done</mat-icon></button>\n                            <button class=\"iconButton\" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>\n                        </span>\n                    </mat-card-content>\n                </mat-card>\n            </span>\n            </ng-container>\n        </div>\n        <h2>Other</h2>\n        <div class=\"flex-container\">\n            <ng-container *ngFor=\"let item of items; let i = index\">\n                <span *ngIf=\"item.category == 'Z'\">\n                <mat-card class=\"card_format\">\n                    <mat-card-header>\n                        <mat-card-title><strong>{{item.name}}</strong></mat-card-title>\n                    </mat-card-header>\n                    <img mat-card-image class=\"card_image\" max-width=\"100%\" src=\"{{item.picture}}\" alt=\"{{item.name}}\">\n                    <mat-card-content class=\"card_text\">\n                        PRICE: ${{item.price}} <br>\n                        Remaining: ${{getRemaining(i)}} <br>\n                        <span *ngIf=\"!contribute[i] && getRemaining(i)!=0\">\n                            <button class=\"blueButton\" mat-raised-button (click)=\"triggerContribute(i)\">Contribute</button>\n                        </span>\n                        <span *ngIf=\"contribute[i]\">\n                            Contribution: <br>$\n                            <mat-form-field>\n                                <input matInput name=\"{{money[i] + amount}}\" [(ngModel)]=\"money[i]\" type=\"number\" placeholder=\"Amount\" value=\"0\" required #amount=\"ngModel\">\n                            </mat-form-field>\n                            <button class=\"iconButton\" mat-icon-button (click)=\"buy(i, money[i])\" [disabled]=\"!checkValid(i)\"><mat-icon>done</mat-icon></button>\n                            <button class=\"iconButton\" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>\n                        </span>\n                    </mat-card-content>\n                </mat-card>\n            </span>\n            </ng-container>\n        </div>\n    </div>\n</ng-sidebar-container>\n\n"
 
 /***/ }),
 
@@ -643,6 +643,18 @@ var RegistryComponent = /** @class */ (function () {
         this.edit = false;
         this.enterCode = false;
         this.items = [];
+        this.kitchen = [];
+        this.numKitchen = 0;
+        this.furniture = [];
+        this.numFurniture = 0;
+        this.games = [];
+        this.numGames = 0;
+        this.house = [];
+        this.numHouse = 0;
+        this.travel = [];
+        this.numTravel = 0;
+        this.other = [];
+        this.numOther = 0;
         this.oldAmounts = [];
         this.contribute = [];
         this.money = [];
@@ -652,8 +664,10 @@ var RegistryComponent = /** @class */ (function () {
         this.editEmail = "";
         this.editMessage = "";
         this.code = "";
-        this.registryUrl = '/wedding/registryapi/';
-        this.contributionUrl = '/wedding/contributionapi/';
+        this.host = 'http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com';
+        // host = 'http://localhost:8000'
+        this.registryUrl = this.host + '/wedding/registryapi/';
+        this.contributionUrl = this.host + '/wedding/contributionapi/';
         this.headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]({
             'Content-Type': 'application/json',
             'X-CSRFToken': this.getCookie('csrftoken')
@@ -663,6 +677,30 @@ var RegistryComponent = /** @class */ (function () {
         var _this = this;
         this.http.get(this.registryUrl).toPromise().then(function (res) {
             _this.items = res.json();
+            _this.kitchen = _this.items.filter(function (r) { return r.category === "A"; }).sort(function (a, b) { return ('' + a.name).localeCompare('' + b.name); });
+            _this.furniture = _this.items.filter(function (r) { return r.category === "B"; }).sort(function (a, b) { return ('' + a.name).localeCompare('' + b.name); });
+            _this.house = _this.items.filter(function (r) { return r.category === "C"; }).sort(function (a, b) { return ('' + a.name).localeCompare('' + b.name); });
+            _this.games = _this.items.filter(function (r) { return r.category === "D"; }).sort(function (a, b) { return ('' + a.name).localeCompare('' + b.name); });
+            _this.travel = _this.items.filter(function (r) { return r.category === "E"; }).sort(function (a, b) { return ('' + a.name).localeCompare('' + b.name); });
+            _this.other = _this.items.filter(function (r) { return r.category === "Z"; }).sort(function (a, b) { return ('' + a.name).localeCompare('' + b.name); });
+            _this.items = [];
+            _this.numKitchen = _this.kitchen.length;
+            _this.numFurniture = _this.furniture.length;
+            _this.numHouse = _this.house.length;
+            _this.numGames = _this.games.length;
+            _this.numTravel = _this.travel.length;
+            _this.numOther = _this.other.length;
+            console.log(_this.numKitchen);
+            _this.items = _this.items.concat(_this.kitchen);
+            _this.items = _this.items.concat(_this.furniture);
+            _this.items = _this.items.concat(_this.house);
+            _this.items = _this.items.concat(_this.games);
+            _this.items = _this.items.concat(_this.travel);
+            _this.items = _this.items.concat(_this.other);
+            console.log(_this.kitchen);
+            console.log(_this.furniture);
+            console.log("AFTER");
+            console.log(_this.items);
             for (var i in _this.items) {
                 _this.contribute[i] = false;
                 if (_this.items[i].raised) {
@@ -675,6 +713,7 @@ var RegistryComponent = /** @class */ (function () {
         });
         this.config.duration = 1000;
         this.config.panelClass = ['snackClass'];
+        console.log(this.items);
     };
     RegistryComponent.prototype.getCookie = function (name) {
         var value = "; " + document.cookie;
@@ -771,7 +810,7 @@ var RegistryComponent = /** @class */ (function () {
         }
         dialogRef.afterClosed().subscribe(function (result) {
             if (result != "Cancel") {
-                _this.http.delete(_this.contributionUrl + "?code=" + _this.code).toPromise().then(function (res) {
+                _this.http.delete(_this.contributionUrl + "?code=" + _this.code, new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: _this.headers })).toPromise().then(function (res) {
                     for (var c in _this.contribute) {
                         if (_this.contribute[c] && _this.bought[c] > 0) {
                             var newContribution = {};
@@ -805,10 +844,10 @@ var RegistryComponent = /** @class */ (function () {
                         body = body + "<p>We realize that supporting us financially is not always possible. Please know that we still value your continued support in ways of prayer and love as we start this new chapter in our lives!</p><hr><p><strong>Sean and Tiffanie</strong></p>";
                     }
                     else if (!_this.edit) {
-                        body = body + "<p>Thank you for your contribution to our Registry! What you have committed to can be found below. At the wedding there will be an opportunity to leave cash or cheque (payable to Sean Baergen) in order to pay for your committments. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to modify your commitment, just return to <a href=http://seanandtiffanie2019.ca/registry>the registry</a> and enter in your code: <strong>" + _this.code + "</strong>";
+                        body = body + "<p>Thank you for your contribution to our Registry! As a reminder, we do not receive any money through the website so please bring your contribution <strong>to the wedding</strong>. There will be an opportunity to leave cash or a cheque (payable to Sean Baergen) at the wedding. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to modify your commitment, just return to <a href=http://seanandtiffanie2019.ca/registry>the registry</a> and enter in your code: <strong>" + _this.code + "</strong>";
                     }
                     else {
-                        body = body + "<p>Your contribution has been modified. What you have committed to can be found below. At the wedding there will be an opportunity to leave cash or cheque (payable to Sean Baergen) in order to pay for your committments. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to further modify your commitment, just return to <a href=http://http://seanandtiffanie2019.ca/registry>the registry</a> and enter in your code: <strong>" + _this.code + "</strong>";
+                        body = body + "<p>Your contribution has been modified. As a reminder, we do not receive any money through the website so please bring your contribution <strong>to the wedding</strong>. There will be an opportunity to leave cash or a cheque (payable to Sean Baergen) at the wedding. If you prefer you can also e-transfer us (sean.tiffanie@gmail.com).</p><p>If you would like to further modify your commitment, just return to <a href=http://http://seanandtiffanie2019.ca/registry>the registry</a> and enter in your code: <strong>" + _this.code + "</strong>";
                     }
                     if (_this.getTotal() != 0) {
                         body = body + "<h3>Items Commited To</h3><hr>";
@@ -1033,8 +1072,8 @@ var RsvpComponent = /** @class */ (function () {
         this.game = [];
         this.tea = [];
         this.restrictions = [];
-        // host = 'http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com'
-        this.host = 'http://localhost:8000';
+        this.host = 'http://django-envtwo.juxsripmvg.ca-central-1.elasticbeanstalk.com';
+        // host = 'http://localhost:8000'
         this.url = this.host + '/wedding/guestsapi/';
         this.contributionUrl = this.host + '/wedding/contributionapi/';
         this.headers = new _angular_http__WEBPACK_IMPORTED_MODULE_2__["Headers"]({

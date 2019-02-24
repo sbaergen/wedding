@@ -1,9 +1,13 @@
 
 
 <div class="jumbotron">
-            <h1>Registry</h1>
-            <p>Our registry is a bit different than other registries. Since we are having the wedding in Edmonton and not living in Edmonton, we want to avoid having to ship a lot of things back home. However, we still wanted to give you the opportunity to choose out a specific gift. Therefore, we have set up this page where you can designate a certain amount of money towards a certain item. We still ask that you only give us money, but we will only use your money towards the item it was meant for. Another benefit of this is that you can feel free to contribute to a portion of an item. Therefore you are completely free to spend however much you are comfortable with without feeling like you need to buy a whole item. After designating your contribution, you will have the opportunity to enter your name, email, and/or a message to go along with your gift. The email will be used to send you a record of what you contributed to and a code you can use to change your gift. These entries are completely optional. If you have any questions, please email us at <a href="mailto:sean.tiffanie@gmail.com">sean.tiffanie@gmail.com</a>.</p>
-        </div>
+    <h1>Registry</h1>
+    <p>Our registry is a bit different than other registries! We’d like to give you the opportunity to support and celebrate our marriage by contributing to our registry. However, since we’re getting married in a different city than the city we live in, we’d like to minimize the amount of physical items we have to move. Please contribute however much you are comfortable with for each item, and feel free to contribute to only a portion of an item’s cost!</p>
+
+    <p>After designating your contribution, you will have the option to enter your name, email, and/or a message to go along with your gift. Your email will be used to send you a record of what you contributed, and a code you can use to change your gift. If you have any questions, please email us at <a href="mailto:sean.tiffanie@gmail.com">sean.tiffanie@gmail.com</a>.</p>
+
+    <p>Note: We are not actually receiving your contribution through this website – please remember to bring your contribution to our wedding!</p>
+</div>
 <ng-sidebar-container class="sidebar">
     <ng-sidebar [(opened)]="opened" mode="push">
         <strong>Contributions</strong>
@@ -32,18 +36,48 @@
                 </mat-form-field>
                 <button mat-fab (click)="checkCode(codeInput)" color="primary" [disabled]="!codeInput.value">Submit</button>
             </div>
-                <span *ngIf="edit && !enterCode">
-                    <button class="blueButton" `mat-raised-button float="right" (click)="submit()">Save Changes</button>
-                </span>
+            <span *ngIf="edit && !enterCode">
+                <button class="blueButton" `mat-raised-button float="right" (click)="submit()">Save Changes</button>
+            </span>
         </form>
         <br>
-            <div class="flex-container">
-            <div *ngFor="let item of items; let i = index">
+        <h2>Kitchen</h2>
+        <div class="flex-container">
+            <ng-container *ngFor="let item of items; let i = index">
+                <span *ngIf="item.category == 'A'">
+                <mat-card class="card_format">
+                    <mat-card-header>
+                        <mat-card-title><strong>{{item.name}}</strong></mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image class="card_image" max-width="100%" src="{{item.picture}}" alt="{{item.name}}">
+                    <mat-card-content class="card_text">
+                        PRICE: ${{item.price}} <br>
+                        Remaining: ${{getRemaining(i)}} <br>
+                        <span *ngIf="!contribute[i] && getRemaining(i)!=0">
+                            <button class="blueButton" mat-raised-button (click)="triggerContribute(i)">Contribute</button>
+                        </span>
+                        <span *ngIf="contribute[i]">
+                            Contribution: <br>$
+                            <mat-form-field>
+                                <input matInput name="{{money[i] + amount}}" [(ngModel)]="money[i]" type="number" placeholder="Amount" value="0" required #amount="ngModel">
+                            </mat-form-field>
+                            <button class="iconButton" mat-icon-button (click)="buy(i, money[i])" [disabled]="!checkValid(i)"><mat-icon>done</mat-icon></button>
+                            <button class="iconButton" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>
+                        </span>
+                    </mat-card-content>
+                </mat-card>
+            </span>
+            </ng-container>
+        </div>
+        <h2>Furniture</h2>
+        <div class="flex-container">
+            <ng-container *ngFor="let item of items; let i = index">
+                <span *ngIf="item.category == 'B'">
                     <mat-card class="card_format">
                         <mat-card-header>
                             <mat-card-title><strong>{{item.name}}</strong></mat-card-title>
                         </mat-card-header>
-                        <img mat-card-image class="card_image" max-width="100%" src="{{item.picture}}" alt="item.name">
+                        <img mat-card-image class="card_image" max-width="100%" src="{{item.picture}}" alt="{{item.name}}">
                         <mat-card-content class="card_text">
                             PRICE: ${{item.price}} <br>
                             Remaining: ${{getRemaining(i)}} <br>
@@ -60,10 +94,121 @@
                             </span>
                         </mat-card-content>
                     </mat-card>
-                <!-- </mat-grid-tile> -->
-            </div>
+                </span>
+            </ng-container>
         </div>
-        <!-- </mat-grid-list> -->
+        <h2>House</h2>
+        <div class="flex-container">
+            <ng-container *ngFor="let item of items; let i = index">
+                <span *ngIf="item.category == 'C'">
+                <mat-card class="card_format">
+                    <mat-card-header>
+                        <mat-card-title><strong>{{item.name}}</strong></mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image class="card_image" max-width="100%" src="{{item.picture}}" alt="{{item.name}}">
+                    <mat-card-content class="card_text">
+                        PRICE: ${{item.price}} <br>
+                        Remaining: ${{getRemaining(i)}} <br>
+                        <span *ngIf="!contribute[i] && getRemaining(i)!=0">
+                            <button class="blueButton" mat-raised-button (click)="triggerContribute(i)">Contribute</button>
+                        </span>
+                        <span *ngIf="contribute[i]">
+                            Contribution: <br>$
+                            <mat-form-field>
+                                <input matInput name="{{money[i] + amount}}" [(ngModel)]="money[i]" type="number" placeholder="Amount" value="0" required #amount="ngModel">
+                            </mat-form-field>
+                            <button class="iconButton" mat-icon-button (click)="buy(i, money[i])" [disabled]="!checkValid(i)"><mat-icon>done</mat-icon></button>
+                            <button class="iconButton" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>
+                        </span>
+                    </mat-card-content>
+                </mat-card>
+            </span>
+            </ng-container>
+        </div>
+        <h2>Games</h2>
+        <div class="flex-container">
+            <ng-container *ngFor="let item of items; let i = index">
+                <span *ngIf="item.category == 'D'">
+                <mat-card class="card_format">
+                    <mat-card-header>
+                        <mat-card-title><strong>{{item.name}}</strong></mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image class="card_image" max-width="100%" src="{{item.picture}}" alt="{{item.name}}">
+                    <mat-card-content class="card_text">
+                        PRICE: ${{item.price}} <br>
+                        Remaining: ${{getRemaining(i)}} <br>
+                        <span *ngIf="!contribute[i] && getRemaining(i)!=0">
+                            <button class="blueButton" mat-raised-button (click)="triggerContribute(i)">Contribute</button>
+                        </span>
+                        <span *ngIf="contribute[i]">
+                            Contribution: <br>$
+                            <mat-form-field>
+                                <input matInput name="{{money[i] + amount}}" [(ngModel)]="money[i]" type="number" placeholder="Amount" value="0" required #amount="ngModel">
+                            </mat-form-field>
+                            <button class="iconButton" mat-icon-button (click)="buy(i, money[i])" [disabled]="!checkValid(i)"><mat-icon>done</mat-icon></button>
+                            <button class="iconButton" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>
+                        </span>
+                    </mat-card-content>
+                </mat-card>
+            </span>
+            </ng-container>
+        </div>
+        <h2>Travel</h2>
+        <div class="flex-container">
+            <ng-container *ngFor="let item of items; let i = index">
+                <span *ngIf="item.category == 'E'">
+                <mat-card class="card_format">
+                    <mat-card-header>
+                        <mat-card-title><strong>{{item.name}}</strong></mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image class="card_image" max-width="100%" src="{{item.picture}}" alt="{{item.name}}">
+                    <mat-card-content class="card_text">
+                        PRICE: ${{item.price}} <br>
+                        Remaining: ${{getRemaining(i)}} <br>
+                        <span *ngIf="!contribute[i] && getRemaining(i)!=0">
+                            <button class="blueButton" mat-raised-button (click)="triggerContribute(i)">Contribute</button>
+                        </span>
+                        <span *ngIf="contribute[i]">
+                            Contribution: <br>$
+                            <mat-form-field>
+                                <input matInput name="{{money[i] + amount}}" [(ngModel)]="money[i]" type="number" placeholder="Amount" value="0" required #amount="ngModel">
+                            </mat-form-field>
+                            <button class="iconButton" mat-icon-button (click)="buy(i, money[i])" [disabled]="!checkValid(i)"><mat-icon>done</mat-icon></button>
+                            <button class="iconButton" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>
+                        </span>
+                    </mat-card-content>
+                </mat-card>
+            </span>
+            </ng-container>
+        </div>
+        <h2>Other</h2>
+        <div class="flex-container">
+            <ng-container *ngFor="let item of items; let i = index">
+                <span *ngIf="item.category == 'Z'">
+                <mat-card class="card_format">
+                    <mat-card-header>
+                        <mat-card-title><strong>{{item.name}}</strong></mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image class="card_image" max-width="100%" src="{{item.picture}}" alt="{{item.name}}">
+                    <mat-card-content class="card_text">
+                        PRICE: ${{item.price}} <br>
+                        Remaining: ${{getRemaining(i)}} <br>
+                        <span *ngIf="!contribute[i] && getRemaining(i)!=0">
+                            <button class="blueButton" mat-raised-button (click)="triggerContribute(i)">Contribute</button>
+                        </span>
+                        <span *ngIf="contribute[i]">
+                            Contribution: <br>$
+                            <mat-form-field>
+                                <input matInput name="{{money[i] + amount}}" [(ngModel)]="money[i]" type="number" placeholder="Amount" value="0" required #amount="ngModel">
+                            </mat-form-field>
+                            <button class="iconButton" mat-icon-button (click)="buy(i, money[i])" [disabled]="!checkValid(i)"><mat-icon>done</mat-icon></button>
+                            <button class="iconButton" mat-icon-button (click)=unbuy(i)><mat-icon>cancel</mat-icon></button>
+                        </span>
+                    </mat-card-content>
+                </mat-card>
+            </span>
+            </ng-container>
+        </div>
     </div>
 </ng-sidebar-container>
 

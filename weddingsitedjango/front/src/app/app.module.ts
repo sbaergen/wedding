@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { AccomodationsComponent } from './accomodations/accomodations.component';
+import { accommodationsComponent } from './accommodations/accommodations.component';
 import { EventComponent } from './event/event.component';
 import { RegistryComponent, RegistryDialog, EditDialog, NotFoundDialog } from './registry/registry.component';
 import { PhotosComponent } from './photos/photos.component';
@@ -22,7 +22,7 @@ import { SidebarModule } from 'ng-sidebar';
 @NgModule({
   declarations: [
     AppComponent,
-    AccomodationsComponent,
+    accommodationsComponent,
     EventComponent,
     RegistryComponent,
     PhotosComponent,
